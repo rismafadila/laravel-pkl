@@ -46,3 +46,13 @@ Route::group(['prefix' => 'pengguna','middleware' => ['auth','role:pengguna']], 
         return 'halaman profile pengguna';
     });
 });
+
+Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
+    Route::get('/peminjam', function(){
+        return view ('peminjaman.index');
+    });
+
+        Route::get('/pengembalian', function(){
+            return view ('pengembalian.index');
+        });
+    });
