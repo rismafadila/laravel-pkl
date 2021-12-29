@@ -15,6 +15,11 @@ class CreateLaporansTable extends Migration
     {
         Schema::create('laporans', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('id_pinjam')->unsigned();
+            $table->string('status');
+            $table->foreign('id_pinjam')->references('id')
+            ->on('peminjamen')->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

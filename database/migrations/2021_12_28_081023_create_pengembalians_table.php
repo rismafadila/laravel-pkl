@@ -15,6 +15,12 @@ class CreatePengembaliansTable extends Migration
     {
         Schema::create('pengembalians', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('id_pinjam')->unsigned();
+            $table->bigInteger('qty');
+            $table->date('tgl_kembali');
+            $table->foreign('id_pinjam')->references('id')
+            ->on('peminjamen')->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }
