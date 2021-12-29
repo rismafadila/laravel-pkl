@@ -4,7 +4,7 @@
 
 @section('content_header')
 
-Peminjaman
+Barang Keluar
 
 @endsection
 
@@ -14,36 +14,32 @@ Peminjaman
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Data Peminjaman
-                    <a href="{{route('peminjaman.create')}}" class="btn btn-sm btn-outline-primary float-right">Tambah peminjaman</a>
+                    Data Barang Keluar
+                    <a href="{{route('barang_keluar.create')}}" class="btn btn-sm btn-outline-primary float-right">Tambah Barang</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
                                 <th>No</th>
-                                <th>Peminjam</th>
                                 <th>Nama Barang</th>
-                                <th>No.Telp</th>
                                 <th>Qty</th>
-                                <th>Tanggal Pinjam</th>
+                                <th>Tanggal Keluar</th>
                                 <th>Aksi</th>
                             </tr>
                             @php $no=1; @endphp
-                            @foreach($peminjaman as $data)
+                            @foreach($barang_keluar as $data)
                             <tr>
                                 <td>{{$no++}}</td>
-                                <td>{{$data->nama}}</td>
                                 <td>{{ $data->barang->nama_barang }}</td>
-                                <td>{{$data->telp}}</td>
                                 <td>{{$data->qty}}</td>
-                                <td>{{$data->tgl_pinjam}}</td>
+                                <td>{{$data->tgl_keluar}}</td>
                                 <td>
-                                    <form action="{{route('peminjaman.destroy',$data->id)}}" method="post">
+                                    <form action="{{route('barang_keluar.destroy',$data->id)}}" method="post">
                                         @method('delete')
                                         @csrf
-                                        <a href="{{route('peminjaman.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
-                                        <a href="{{route('peminjaman.show',$data->id)}}" class="btn btn-outline-warning">Show</a>
+                                        <a href="{{route('barang_keluar.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
+                                        <a href="{{route('barang_keluar.show',$data->id)}}" class="btn btn-outline-warning">Show</a>
                                         <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Apakah anda yakin menghapus ini?');">Delete</button>
                                     </form>
                                 </td>

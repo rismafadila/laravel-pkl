@@ -12,9 +12,14 @@ class BarangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
-        //
+        $barang = Barang::all();
+        return view('barang.index', compact('barang'));
     }
 
     /**
@@ -24,7 +29,8 @@ class BarangController extends Controller
      */
     public function create()
     {
-        //
+        $barang = Barang::all();
+        return view('barang.create', compact('barang'));
     }
 
     /**
@@ -35,7 +41,18 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama_barang' => 'required',
+            'qty' => 'required',
+            'tgl_masuk' => 'required',
+        ]);
+
+        $barang = new Barang;
+        $barang->nama_barang = $request->nama_barang;
+        $barang->qty = $request->qty;
+        $barang->tgl_masuk = $request->tgl_masuk;
+        $barang->save();
+        return redirect()->route('barang.index');
     }
 
     /**
@@ -44,9 +61,10 @@ class BarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function show(Barang $barang)
+    public function show($id)
     {
-        //
+        $barang = Barang::findOrFail($id);
+        return view('barang.show', compact('barang'));
     }
 
     /**
@@ -55,9 +73,10 @@ class BarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function edit(Barang $barang)
+    public function edit($id)
     {
-        //
+        $barang = Barang::findOrFail($id);
+        return view('barang.edit', compact('barang'));
     }
 
     /**
@@ -67,9 +86,20 @@ class BarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Barang $barang)
+    public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'nama_barang' => 'required',
+            'qty' => 'required',
+            'tgl_masuk' => 'required',
+        ]);
+
+        $author = Author::findOrFail($id);
+        $barang->nama_barang = $request->nama_barang;
+        $barang->qty = $request->qty;
+        $barang->tgl_masuk = $request->tgl_masuk;
+        $author->save();
+        return redirect()->route('barang.index');
     }
 
     /**
@@ -78,8 +108,10 @@ class BarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Barang $barang)
+    public function destroy($id)
     {
-        //
+        $barang = Barang::findOrFail($id);
+        $barang->delete();
+        return redirect()->route('barang.index');
     }
 }

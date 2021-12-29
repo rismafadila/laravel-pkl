@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Inventaris',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -254,12 +254,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Barang Masuk',
-                    'url'  => '#',
+                    'url'  => 'admin/barang',
                 ],
 
                 [
                     'text' => 'Barang Keluar',
-                    'url'  => '#',
+                    'url'  => 'admin/barang_keluar',
                 ],
             ],
         ],

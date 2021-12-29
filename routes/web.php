@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\BarangKeluarController;
+use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\PengembalianController;
+use App\Http\Controllers\LaporanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +53,10 @@ Route::group(['prefix' => 'pengguna','middleware' => ['auth','role:pengguna']], 
 });
 
 Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
+    Route::get('/barang', function(){
+        return view ('barang.index');
+    });
+
     Route::get('/peminjam', function(){
         return view ('peminjaman.index');
     });
@@ -55,4 +64,10 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
         Route::get('/pengembalian', function(){
             return view ('pengembalian.index');
         });
+
+        Route::resource('barang', BarangController::class);
+        Route::resource('barang_keluar', BarangKeluarController::class);
+        Route::resource('peminjaman', PeminjamanController::class);
+        Route::resource('pengembalian', PengembalianController::class);
+        Route::resource('laporan', LaporanController::class);
     });

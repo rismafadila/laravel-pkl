@@ -12,9 +12,14 @@ class PeminjamanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
-        //
+        $peminjaman = Peminjaman::all();
+        return view('peminjaman.index', compact('peminjaman'));
     }
 
     /**
@@ -24,7 +29,8 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
-        //
+        $peminjaman = Peminjaman::all();
+        return view('peminjaman.create', compact('peminjaman'));
     }
 
     /**
@@ -35,51 +41,86 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_barang' => 'required',
+            'nama' => 'required',
+            'telp' => 'required',
+            'qty' => 'required',
+            'tgl_pinjam' => 'required',
+
+        ]);
+
+        $peminjaman = new Peminjaman;
+        $peminjaman->nama = $request->nama;
+        $peminjaman->telp = $request->telp;
+        $peminjaman->qty = $request->qty;
+        $peminjaman->tgl_pinjam = $request->tgl_pinjam;
+        $peminjaman->id_barang = $request->id_barang;
+        $peminjaman->save();
+        return redirect()->route('barang_keluar.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Peminjaman  $peminjaman
+     * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function show(Peminjaman $peminjaman)
+    public function show($id)
     {
-        //
+        $peminjaman = Peminjaman::findOrFail($id);
+        return view('peminjaman.show', compact('peminjaman'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Peminjaman  $peminjaman
+     * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function edit(Peminjaman $peminjaman)
+    public function edit($id)
     {
-        //
+        $peminjaman = Peminjaman::findOrFail($id);
+        return view('peminjaman.edit', compact('peminjaman'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Peminjaman  $peminjaman
+     * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Peminjaman $peminjaman)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'id_barang' => 'required',
+            'nama' => 'required',
+            'telp' => 'required',
+            'qty' => 'required',
+            'tgl_pinjam' => 'required',
+        ]);
+
+        $peminjaman = Peminjaman::findOrFail($id);
+        $peminjaman->nama = $request->nama;
+        $peminjaman->telp = $request->telp;
+        $peminjaman->qty = $request->qty;
+        $peminjaman->tgl_pinjam = $request->tgl_pinjam;
+        $peminjaman->id_barang = $request->id_barang;
+        $peminjaman->save();
+        return redirect()->route('barang.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Peminjaman  $peminjaman
+     * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Peminjaman $peminjaman)
+    public function destroy($id)
     {
-        //
+        $peminjaman = Peminjaman::findOrFail($id);
+        $peminjaman->delete();
+        return redirect()->route('peminjaman.index');
     }
 }
