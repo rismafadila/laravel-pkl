@@ -12,9 +12,14 @@ class PengembalianController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
-        //
+        $pengembalian = Pengembalian::all();
+        return view('pengembalian.index', compact('pengembalian'));
     }
 
     /**
@@ -24,7 +29,8 @@ class PengembalianController extends Controller
      */
     public function create()
     {
-        //
+        $pengembalian = Pengembalian::all();
+        return view('pengembalian.create', compact('pengembalian'));
     }
 
     /**
@@ -35,51 +41,77 @@ class PengembalianController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'id_pinjam' => 'required',
+            'qty' => 'required',
+            'tgl_kembali' => 'required',
+        ]);
+
+        $pengembalian = new Pengembalian;
+        $pengembalian->id_pinjam = $request->id_pinjam;
+        $pengembalian->qty = $request->qty;
+        $pengembalian->tgl_kembali = $request->tgl_kembali;
+        $pengembalian->save();
+        return redirect()->route('pengembalian.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pengembalian  $pengembalian
+     * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function show(Pengembalian $pengembalian)
+    public function show($id)
     {
-        //
+        $pengembalian = Pengembalian::findOrFail($id);
+        return view('pengembalian.show', compact('pengembalian'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pengembalian  $pengembalian
+     * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pengembalian $pengembalian)
+    public function edit($id)
     {
-        //
+        $pengembalian = Pengembalian::findOrFail($id);
+        return view('pengembalian.edit', compact('pengembalian'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pengembalian  $pengembalian
+     * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pengembalian $pengembalian)
+    public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'id_pinjam' => 'required',
+            'qty' => 'required',
+            'tgl_kembali' => 'required',
+        ]);
+
+        $pengembalian = new Pengembalian;
+        $pengembalian->id_pinjam = $request->id_pinjam;
+        $pengembalian->qty = $request->qty;
+        $pengembalian->tgl_kembali = $request->tgl_kembali;
+        $pengembalian->save();
+        return redirect()->route('pengembalian.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pengembalian  $pengembalian
+     * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pengembalian $pengembalian)
+    public function destroy($id)
     {
-        //
+        $pengembalian = Pengembalian::findOrFail($id);
+        $pengembalian->delete();
+        return redirect()->route('pengembalian.index');
     }
 }

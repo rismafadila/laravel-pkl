@@ -4,7 +4,7 @@
 
 @section('content_header')
 
-Dashboard
+Pengembalian
 
 @endsection
 
@@ -14,32 +14,32 @@ Dashboard
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Data Barang
-                    <a href="{{route('barang.create')}}" class="btn btn-sm btn-outline-primary float-right">Tambah Barang</a>
+                    Data Pengembalian
+                    <a href="{{route('pengembalian.create')}}" class="btn btn-sm btn-outline-primary float-right">Tambah pengembalian</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
                                 <th>No</th>
-                                <th>Nama Barang</th>
+                                <th>Peminjam</th>
                                 <th>Qty</th>
-                                <th>Tanggal Masuk</th>
+                                <th>Tanggal Kembali</th>
                                 <th>Aksi</th>
                             </tr>
                             @php $no=1; @endphp
-                            @foreach($barang as $data)
+                            @foreach($pengembalian as $data)
                             <tr>
                                 <td>{{$no++}}</td>
-                                <td>{{$data->nama_barang}}</td>
+                                <td>{{ $data->peminjaman->nama }}</td>
                                 <td>{{$data->qty}}</td>
-                                <td>{{$data->tgl_masuk}}</td>
+                                <td>{{$data->tgl_kembali}}</td>
                                 <td>
-                                    <form action="{{route('barang.destroy',$data->id)}}" method="post">
+                                    <form action="{{route('pengembalian.destroy',$data->id)}}" method="post">
                                         @method('delete')
                                         @csrf
-                                        <a href="{{route('barang.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
-                                        <a href="{{route('barang.show',$data->id)}}" class="btn btn-outline-warning">Show</a>
+                                        <a href="{{route('pengembalian.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
+                                        <a href="{{route('pengembalian.show',$data->id)}}" class="btn btn-outline-warning">Show</a>
                                         <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Apakah anda yakin menghapus ini?');">Delete</button>
                                     </form>
                                 </td>

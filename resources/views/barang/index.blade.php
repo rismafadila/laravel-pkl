@@ -31,11 +31,9 @@ Dashboard
                             @foreach($barang as $data)
                             <tr>
                                 <td>{{$no++}}</td>
-                                <td>{{$data->peminjam}}</td>
-                                <td>{{ $data->barang->nama }}</td>
-                                <td>{{$data->telp}}</td>
+                                <td>{{$data->nama_barang}}</td>
                                 <td>{{$data->qty}}</td>
-                                <td>{{$data->tgl_pinjam}}</td>
+                                <td>{{$data->tgl_masuk}}</td>
                                 <td>
                                     <form action="{{route('barang.destroy',$data->id)}}" method="post">
                                         @method('delete')

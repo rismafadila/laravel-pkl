@@ -4,7 +4,7 @@
 
 @section('content_header')
 
-Peminjaman
+peminjaman
 
 @endsection
 
@@ -14,17 +14,17 @@ Peminjaman
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Data Peminjaman
-                    <a href="{{route('peminjaman.create')}}" class="btn btn-sm btn-outline-primary float-right">Tambah peminjaman</a>
+                    Data peminjaman
+                    <a href="{{route('peminjaman.create')}}" class="btn btn-sm btn-outline-primary float-right">Tambah pengembalian</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
                                 <th>No</th>
-                                <th>Peminjam</th>
+                                <th>Nama</th>
                                 <th>Nama Barang</th>
-                                <th>No.Telp</th>
+                                <th>No Telp</th>
                                 <th>Qty</th>
                                 <th>Tanggal Pinjam</th>
                                 <th>Aksi</th>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Barang;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 
@@ -18,7 +18,7 @@ class PeminjamanController extends Controller
     }
     public function index()
     {
-        $peminjaman = Peminjaman::all();
+        $peminjaman = Peminjaman::with('barang')->get();
         return view('peminjaman.index', compact('peminjaman'));
     }
 
@@ -41,23 +41,22 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'id_barang' => 'required',
             'nama' => 'required',
             'telp' => 'required',
             'qty' => 'required',
             'tgl_pinjam' => 'required',
-
         ]);
 
         $peminjaman = new Peminjaman;
+        $peminjaman->id_barang = $request->id_barang;
         $peminjaman->nama = $request->nama;
         $peminjaman->telp = $request->telp;
         $peminjaman->qty = $request->qty;
         $peminjaman->tgl_pinjam = $request->tgl_pinjam;
-        $peminjaman->id_barang = $request->id_barang;
         $peminjaman->save();
-        return redirect()->route('barang_keluar.index');
+        return redirect()->route('peminjaman.index');
     }
 
     /**
@@ -68,7 +67,7 @@ class PeminjamanController extends Controller
      */
     public function show($id)
     {
-        $peminjaman = Peminjaman::findOrFail($id);
+        $peminjaman = peminjaman::findOrFail($id);
         return view('peminjaman.show', compact('peminjaman'));
     }
 
@@ -80,7 +79,7 @@ class PeminjamanController extends Controller
      */
     public function edit($id)
     {
-        $peminjaman = Peminjaman::findOrFail($id);
+        $peminjaman = peminjaman::findOrFail($id);
         return view('peminjaman.edit', compact('peminjaman'));
     }
 
@@ -93,7 +92,7 @@ class PeminjamanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $validated = $request->validate([
             'id_barang' => 'required',
             'nama' => 'required',
             'telp' => 'required',
@@ -101,14 +100,14 @@ class PeminjamanController extends Controller
             'tgl_pinjam' => 'required',
         ]);
 
-        $peminjaman = Peminjaman::findOrFail($id);
+        $peminjaman = new Peminjaman;
+        $peminjaman->id_barang = $request->id_barang;
         $peminjaman->nama = $request->nama;
         $peminjaman->telp = $request->telp;
         $peminjaman->qty = $request->qty;
         $peminjaman->tgl_pinjam = $request->tgl_pinjam;
-        $peminjaman->id_barang = $request->id_barang;
         $peminjaman->save();
-        return redirect()->route('barang.index');
+        return redirect()->route('peminjaman.index');
     }
 
     /**
