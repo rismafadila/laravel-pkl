@@ -17,4 +17,9 @@ class Peminjaman extends Model
         return $this->belongsTo('App\Models\Barang','id_barang');
 
     }
+    public function pengembalian(){
+
+        return $this->belongsTo('App\Models\Pengembalian','id_pinjam');
+
+    }
 }

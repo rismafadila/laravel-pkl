@@ -18,4 +18,7 @@ class Barang extends Model
      public function barang_keluar(){
         return $this->belongsTo('App\Models\Barang_keluar','id_barang');
 }
+public function peminjaman(){
+    return $this->belongsTo('App\Models\Peminjaman','id_barang');
+}
 }

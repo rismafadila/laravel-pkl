@@ -30,7 +30,7 @@ peminjaman
                                 <th>Aksi</th>
                             </tr>
                             @php $no=1; @endphp
-                            @foreach($peminjaman as $data)
+                            @foreach($pinjam as $data)
                             <tr>
                                 <td>{{$no++}}</td>
                                 <td>{{$data->nama}}</td>

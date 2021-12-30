@@ -18,8 +18,8 @@ class PeminjamanController extends Controller
     }
     public function index()
     {
-        $peminjaman = Peminjaman::with('barang')->get();
-        return view('peminjaman.index', compact('peminjaman'));
+        $pinjam = Peminjaman::with('barang')->get();
+        return view('peminjaman.index', compact('pinjam'));
     }
 
     /**
@@ -29,8 +29,8 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
-        $peminjaman = Peminjaman::all();
-        return view('peminjaman.create', compact('peminjaman'));
+        $pinjam = Peminjaman::all();
+        return view('peminjaman.create', compact('pinjam'));
     }
 
     /**
@@ -49,13 +49,13 @@ class PeminjamanController extends Controller
             'tgl_pinjam' => 'required',
         ]);
 
-        $peminjaman = new Peminjaman;
-        $peminjaman->id_barang = $request->id_barang;
-        $peminjaman->nama = $request->nama;
-        $peminjaman->telp = $request->telp;
-        $peminjaman->qty = $request->qty;
-        $peminjaman->tgl_pinjam = $request->tgl_pinjam;
-        $peminjaman->save();
+        $pinjam = new Peminjaman;
+        $pinjam->id_barang = $request->id_barang;
+        $pinjam->nama = $request->nama;
+        $pinjam->telp = $request->telp;
+        $pinjam->qty = $request->qty;
+        $pinjam->tgl_pinjam = $request->tgl_pinjam;
+        $pinjam->save();
         return redirect()->route('peminjaman.index');
     }
 
@@ -67,8 +67,8 @@ class PeminjamanController extends Controller
      */
     public function show($id)
     {
-        $peminjaman = peminjaman::findOrFail($id);
-        return view('peminjaman.show', compact('peminjaman'));
+        $pinjam = peminjaman::findOrFail($id);
+        return view('peminjaman.show', compact('pinjam'));
     }
 
     /**
@@ -79,8 +79,8 @@ class PeminjamanController extends Controller
      */
     public function edit($id)
     {
-        $peminjaman = peminjaman::findOrFail($id);
-        return view('peminjaman.edit', compact('peminjaman'));
+        $pinjam = peminjaman::findOrFail($id);
+        return view('peminjaman.edit', compact('pinjam'));
     }
 
     /**
@@ -100,13 +100,13 @@ class PeminjamanController extends Controller
             'tgl_pinjam' => 'required',
         ]);
 
-        $peminjaman = new Peminjaman;
-        $peminjaman->id_barang = $request->id_barang;
-        $peminjaman->nama = $request->nama;
-        $peminjaman->telp = $request->telp;
-        $peminjaman->qty = $request->qty;
-        $peminjaman->tgl_pinjam = $request->tgl_pinjam;
-        $peminjaman->save();
+        $pinjam = new Peminjaman;
+        $pinjam->id_barang = $request->id_barang;
+        $pinjam->nama = $request->nama;
+        $pinjam->telp = $request->telp;
+        $pinjam->qty = $request->qty;
+        $pinjam->tgl_pinjam = $request->tgl_pinjam;
+        $pinjam->save();
         return redirect()->route('peminjaman.index');
     }
 
@@ -118,8 +118,8 @@ class PeminjamanController extends Controller
      */
     public function destroy($id)
     {
-        $peminjaman = Peminjaman::findOrFail($id);
-        $peminjaman->delete();
+        $pinjam = Peminjaman::findOrFail($id);
+        $pinjam->delete();
         return redirect()->route('peminjaman.index');
     }
 }
