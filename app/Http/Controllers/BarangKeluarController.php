@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Barang;
 use App\Models\Barang_keluar;
 use Illuminate\Http\Request;
 
@@ -18,7 +18,7 @@ class BarangKeluarController extends Controller
     }
     public function index()
     {
-        $barang_keluar = Barang_keluar::all();
+        $barang_keluar = Barang_keluar::with('barang')->get();
         return view('barang_keluar.index', compact('barang_keluar'));
     }
 
@@ -29,8 +29,8 @@ class BarangKeluarController extends Controller
      */
     public function create()
     {
-        $barang_keluar = Barang_keluar::all();
-        return view('barang_keluar.create', compact('barang_keluar'));
+        $barang = Barang::all();
+        return view('barang_keluar.create', compact('barang'));
     }
 
     /**
@@ -49,9 +49,9 @@ class BarangKeluarController extends Controller
         ]);
 
         $barang_keluar = new Barang_keluar;
+        $barang_keluar->id_barang = $request->id_barang;
         $barang_keluar->qty = $request->qty;
         $barang_keluar->tgl_keluar = $request->tgl_keluar;
-        $barang_keluar->id_barang = $request->id_barang;
         $barang_keluar->save();
         return redirect()->route('barang_keluar.index');
     }
@@ -77,7 +77,8 @@ class BarangKeluarController extends Controller
     public function edit($id)
     {
         $barang_keluar = Barang_keluar::findOrFail($id);
-        return view('barang_keluar.edit', compact('barang_keluar'));
+        $barang= Barang::all();
+        return view('barang_keluar.edit', compact('barang_keluar', 'barang'));
     }
 
     /**
@@ -90,17 +91,18 @@ class BarangKeluarController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'id_barang' => 'required',
             'qty' => 'required',
             'tgl_keluar' => 'required',
-            'id_barang' => 'required',
+
         ]);
 
         $barang_keluar = Barang_keluar::findOrFail($id);
-        $barang_keluar->qty = $request->harga;
-        $barang_keluar->tgl_keluar = $request->stok;
         $barang_keluar->id_barang = $request->id_barang;
+        $barang_keluar->qty = $request->qty;
+        $barang_keluar->tgl_keluar = $request->tgl_keluar;
         $barang_keluar->save();
-        return redirect()->route('barang.index');
+        return redirect()->route('barang_keluar.index');
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Peminjaman;
 use App\Models\Pengembalian;
 use Illuminate\Http\Request;
 
@@ -18,7 +18,7 @@ class PengembalianController extends Controller
     }
     public function index()
     {
-        $pengembalian = Pengembalian::all();
+        $pengembalian = Pengembalian::with('peminjaman')->get();
         return view('pengembalian.index', compact('pengembalian'));
     }
 
@@ -29,8 +29,8 @@ class PengembalianController extends Controller
      */
     public function create()
     {
-        $pengembalian = Pengembalian::all();
-        return view('pengembalian.create', compact('pengembalian'));
+        $peminjaman = Peminjaman::all();
+        return view('pengembalian.create', compact('peminjaman'));
     }
 
     /**
@@ -76,7 +76,8 @@ class PengembalianController extends Controller
     public function edit($id)
     {
         $pengembalian = Pengembalian::findOrFail($id);
-        return view('pengembalian.edit', compact('pengembalian'));
+        $peminjaman = Peminjaman::all();
+        return view('pengembalian.edit', compact('pengembalian', 'peminjaman'));
     }
 
     /**
@@ -88,13 +89,14 @@ class PengembalianController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validated = $request->validate([
+        $request->validate([
             'id_pinjam' => 'required',
             'qty' => 'required',
             'tgl_kembali' => 'required',
+
         ]);
 
-        $pengembalian = new Pengembalian;
+        $pengembalian = Pengembalian::findOrFail($id);
         $pengembalian->id_pinjam = $request->id_pinjam;
         $pengembalian->qty = $request->qty;
         $pengembalian->tgl_kembali = $request->tgl_kembali;

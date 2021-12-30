@@ -29,8 +29,7 @@ class BarangController extends Controller
      */
     public function create()
     {
-        $barang = Barang::all();
-        return view('barang.create', compact('barang'));
+        return view('barang.create');
     }
 
     /**
@@ -94,11 +93,11 @@ class BarangController extends Controller
             'tgl_masuk' => 'required',
         ]);
 
-        $author = Author::findOrFail($id);
+        $barang = Barang::findOrFail($id);
         $barang->nama_barang = $request->nama_barang;
         $barang->qty = $request->qty;
         $barang->tgl_masuk = $request->tgl_masuk;
-        $author->save();
+        $barang->save();
         return redirect()->route('barang.index');
     }
 
