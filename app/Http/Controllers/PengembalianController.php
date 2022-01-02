@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Peminjaman;
+use App\Models\Pinjam;
 use App\Models\Pengembalian;
 use Illuminate\Http\Request;
 
@@ -18,7 +18,7 @@ class PengembalianController extends Controller
     }
     public function index()
     {
-        $pengembalian = Pengembalian::with('peminjaman')->get();
+        $pengembalian = Pengembalian::with('pinjam')->get();
         return view('pengembalian.index', compact('pengembalian'));
     }
 
@@ -29,8 +29,8 @@ class PengembalianController extends Controller
      */
     public function create()
     {
-        $peminjaman = Peminjaman::all();
-        return view('pengembalian.create', compact('peminjaman'));
+        $pinjam = Pinjam::all();
+        return view('pengembalian.create', compact('pinjam'));
     }
 
     /**
@@ -42,13 +42,13 @@ class PengembalianController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'id_pinjam' => 'required',
+            'id_pinjem' => 'required',
             'qty' => 'required',
             'tgl_kembali' => 'required',
         ]);
 
         $pengembalian = new Pengembalian;
-        $pengembalian->id_pinjam = $request->id_pinjam;
+        $pengembalian->id_pinjem = $request->id_pinjem;
         $pengembalian->qty = $request->qty;
         $pengembalian->tgl_kembali = $request->tgl_kembali;
         $pengembalian->save();
@@ -76,8 +76,8 @@ class PengembalianController extends Controller
     public function edit($id)
     {
         $pengembalian = Pengembalian::findOrFail($id);
-        $peminjaman = Peminjaman::all();
-        return view('pengembalian.edit', compact('pengembalian', 'peminjaman'));
+        $pinjam = Pinjam::all();
+        return view('pengembalian.edit', compact('pengembalian', 'pinjam'));
     }
 
     /**
@@ -90,14 +90,14 @@ class PengembalianController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'id_pinjam' => 'required',
+            'id_pinjem' => 'required',
             'qty' => 'required',
             'tgl_kembali' => 'required',
 
         ]);
 
         $pengembalian = Pengembalian::findOrFail($id);
-        $pengembalian->id_pinjam = $request->id_pinjam;
+        $pengembalian->id_pinjem = $request->id_pinjem;
         $pengembalian->qty = $request->qty;
         $pengembalian->tgl_kembali = $request->tgl_kembali;
         $pengembalian->save();

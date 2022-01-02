@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\pinjam;
 use App\Models\Barang;
-use App\Models\Peminjaman;
+
 use Illuminate\Http\Request;
 
-class PeminjamanController extends Controller
+class PinjamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +20,8 @@ class PeminjamanController extends Controller
     }
     public function index()
     {
-        $peminjamen = Peminjaman::with('barang')->get();
-        return view('peminjaman.index', compact('peminjamen'));
+        $pinjam = pinjam::with('barang')->get();
+        return view('pinjam.index', compact('pinjam'));
     }
 
     /**
@@ -29,8 +31,8 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
-        $peminjamen = Peminjaman::all();
-        return view('peminjaman.create', compact('peminjamen'));
+        $pinjam = pinjam::all();
+        return view('pinjam.create', compact('pinjam'));
     }
 
     /**
@@ -41,7 +43,7 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'id_barang' => 'required',
             'nama' => 'required',
             'telp' => 'required',
@@ -49,45 +51,46 @@ class PeminjamanController extends Controller
             'tgl_pinjam' => 'required',
         ]);
 
-        $peminjamen = new Peminjaman;
-        $peminjamen->id_barang = $request->id_barang;
-        $peminjamen->nama = $request->nama;
-        $peminjamen->telp = $request->telp;
-        $peminjamen->qty = $request->qty;
-        $peminjamen->tgl_pinjam = $request->tgl_pinjam;
-        $peminjamen->save();
-        return redirect()->route('peminjaman.index');
+        $pinjam = new pinjam;
+        $pinjam->id_barang = $request->id_barang;
+        $pinjam->nama = $request->nama;
+        $pinjam->telp = $request->telp;
+        $pinjam->qty = $request->qty;
+        $pinjam->tgl_pinjam = $request->tgl_pinjam;
+        $pinjam->save();
+        return redirect()->route('pinjam.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Barang  $barang
+     * @param  \App\Models\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $peminjamen = peminjaman::findOrFail($id);
-        return view('peminjaman.show', compact('pinjam'));
+        $pinjam = pinjam::findOrFail($id);
+        return view('pinjam.show', compact('pinjam'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Barang  $barang
+     * @param  \App\Models\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $peminjamen = peminjaman::findOrFail($id);
-        return view('peminjaman.edit', compact('pinjam'));
+        $pinjam = pinjam::findOrFail($id);
+        $barang= Barang::all();
+        return view('pinjam.edit', compact('pinjam', 'barang'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Barang  $barang
+     * @param  \App\Models\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -100,26 +103,26 @@ class PeminjamanController extends Controller
             'tgl_pinjam' => 'required',
         ]);
 
-        $peminjamen = new Peminjaman;
-        $peminjamen->id_barang = $request->id_barang;
-        $peminjamen->nama = $request->nama;
-        $peminjamen->telp = $request->telp;
-        $peminjamen->qty = $request->qty;
-        $peminjamen->tgl_pinjam = $request->tgl_pinjam;
-        $peminjamen->save();
-        return redirect()->route('peminjaman.index');
+        $pinjam = new pinjam;
+        $pinjam->id_barang = $request->id_barang;
+        $pinjam->nama = $request->nama;
+        $pinjam->telp = $request->telp;
+        $pinjam->qty = $request->qty;
+        $pinjam->tgl_pinjam = $request->tgl_pinjam;
+        $pinjam->save();
+        return redirect()->route('pinjam.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Barang  $barang
+     * @param  \App\Models\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $peminjamen = Peminjaman::findOrFail($id);
-        $peminjamen->delete();
-        return redirect()->route('peminjaman.index');
+        $pinjam = pinjam::findOrFail($id);
+        $pinjam->delete();
+        return redirect()->route('pinjam.index');
     }
 }

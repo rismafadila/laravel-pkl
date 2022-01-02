@@ -20,18 +20,36 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Data Barang Kembali</div>
+                <div class="card-header">Data Barang Peminjaman</div>
                 <div class="card-body">
-                   <form action="{{route('pengembalian.store')}}" method="post">
+                   <form action="{{route('pinjam.store')}}" method="post">
                         @csrf
                         <div class="form-group">
-                            <label for="">Nama Peminjam</label>
-                            <select name="id_pinjem" class="form-control @error('id_pinjem') is-invalid @enderror" >
-                                @foreach($pinjam as $data)
-                                    <option value="{{$data->id}}">{{$data->nama}}</option>
+                            <label for="">Nama Barang</label>
+                            <select name="id_barang" class="form-control @error('id_barang') is-invalid @enderror" >
+                                @foreach($barang as $data)
+                                    <option value="{{$data->id}}">{{$data->nama_barang}}</option>
                                 @endforeach
                             </select>
-                            @error('id_pinjem')
+                            @error('id_barang')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="">Nama</label>
+                            <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror">
+                             @error('nama')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="">No Telp</label>
+                            <input type="number" name="telp" class="form-control @error('telp') is-invalid @enderror">
+                             @error('telp')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -47,9 +65,9 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="">Masukan Tanggal Pengembalian</label>
-                            <input type="date" name="tgl_kembali" class="form-control @error('tgl_kembali') is-invalid @enderror">
-                             @error('tgl_kembali')
+                            <label for="">Masukan Tanggal Peminjaman</label>
+                            <input type="date" name="tgl_pinjam" class="form-control @error('tgl_pinjam') is-invalid @enderror">
+                             @error('tgl_pinjam')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

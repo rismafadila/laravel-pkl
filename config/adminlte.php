@@ -266,7 +266,7 @@ return [
 
         [
             'text' => 'Peminjaman',
-            'url'  => 'admin/peminjam',
+            'url'  => 'admin/pinjam',
             'icon' => 'fas fa-fw fa-file-signature',
         ],
         [

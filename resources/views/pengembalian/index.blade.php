@@ -31,7 +31,7 @@ Pengembalian
                             @foreach($pengembalian as $data)
                             <tr>
                                 <td>{{$no++}}</td>
-                                <td>{{ $data->peminjaman->nama }}</td>
+                                <td>{{ $data->pinjam->nama }}</td>
                                 <td>{{$data->qty}}</td>
                                 <td>{{$data->tgl_kembali}}</td>
                                 <td>

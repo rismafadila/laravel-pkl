@@ -15,15 +15,15 @@ peminjaman
             <div class="card">
                 <div class="card-header">
                     Data peminjaman
-                    <a href="{{route('peminjaman.create')}}" class="btn btn-sm btn-outline-primary float-right">Tambah pengembalian</a>
+                    <a href="{{route('pinjam.create')}}" class="btn btn-sm btn-outline-primary float-right">Tambah peminjaman</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
                                 <th>No</th>
-                                <th>Nama</th>
                                 <th>Nama Barang</th>
+                                <th>Nama</th>
                                 <th>No Telp</th>
                                 <th>Qty</th>
                                 <th>Tanggal Pinjam</th>
@@ -33,17 +33,17 @@ peminjaman
                             @foreach($pinjam as $data)
                             <tr>
                                 <td>{{$no++}}</td>
-                                <td>{{$data->nama}}</td>
                                 <td>{{ $data->barang->nama_barang }}</td>
+                                <td>{{$data->nama}}</td>
                                 <td>{{$data->telp}}</td>
                                 <td>{{$data->qty}}</td>
                                 <td>{{$data->tgl_pinjam}}</td>
                                 <td>
-                                    <form action="{{route('peminjaman.destroy',$data->id)}}" method="post">
+                                    <form action="{{route('pinjam.destroy',$data->id)}}" method="post">
                                         @method('delete')
                                         @csrf
-                                        <a href="{{route('peminjaman.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
-                                        <a href="{{route('peminjaman.show',$data->id)}}" class="btn btn-outline-warning">Show</a>
+                                        <a href="{{route('pinjam.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
+                                        <a href="{{route('pinjam.show',$data->id)}}" class="btn btn-outline-warning">Show</a>
                                         <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Apakah anda yakin menghapus ini?');">Delete</button>
                                     </form>
                                 </td>
