@@ -28,7 +28,7 @@
                             <label for="">Nama Barang</label>
                             <select name="id_barang" class="form-control @error('id_barang') is-invalid @enderror" >
                                 @foreach($barang as $data)
-                                    <option value="{{$data->id}}">{{$data->nama}}</option>
+                                    <option value="{{$data->id}}">{{$data->nama_barang}}</option>
                                 @endforeach
                             </select>
                             @error('id_barang')

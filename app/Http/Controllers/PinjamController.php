@@ -32,7 +32,8 @@ class PinjamController extends Controller
     public function create()
     {
         $pinjam = pinjam::all();
-        return view('pinjam.create', compact('pinjam'));
+        $barang= Barang::all();
+        return view('pinjam.create', compact('pinjam','barang'));
     }
 
     /**
@@ -51,7 +52,7 @@ class PinjamController extends Controller
             'tgl_pinjam' => 'required',
         ]);
 
-        $pinjam = new pinjam;
+        $pinjam = new Pinjam;
         $pinjam->id_barang = $request->id_barang;
         $pinjam->nama = $request->nama;
         $pinjam->telp = $request->telp;
