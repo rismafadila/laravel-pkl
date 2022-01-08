@@ -44,12 +44,14 @@ class BarangController extends Controller
             'nama_barang' => 'required',
             'qty' => 'required',
             'tgl_masuk' => 'required',
+            'jurusan' => 'required',
         ]);
 
         $barang = new Barang;
         $barang->nama_barang = $request->nama_barang;
         $barang->qty = $request->qty;
         $barang->tgl_masuk = $request->tgl_masuk;
+        $barang->jurusan = $request->jurusan;
         $barang->save();
         return redirect()->route('barang.index');
     }
@@ -91,12 +93,14 @@ class BarangController extends Controller
             'nama_barang' => 'required',
             'qty' => 'required',
             'tgl_masuk' => 'required',
+            'jurusan' => 'required',
         ]);
 
         $barang = Barang::findOrFail($id);
         $barang->nama_barang = $request->nama_barang;
         $barang->qty = $request->qty;
         $barang->tgl_masuk = $request->tgl_masuk;
+        $barang->jurusan = $request->jurusan;
         $barang->save();
         return redirect()->route('barang.index');
     }

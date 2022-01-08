@@ -27,6 +27,10 @@ Dashboard
                         <input type="date" name="tgl_masuk" value="{{$barang->tgl_masuk}}" class="form-control" readonly>
                     </div>
                     <div class="form-group">
+                        <label for="">Jurusan</label>
+                        <input type="text" name="jurusan" value="{{$barang->jurusan}}" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
                         <a href="{{route('barang.index')}}" class="btn btn-block btn-primary">Kembali</a>
                     </div>
                 </div>

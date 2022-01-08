@@ -18,6 +18,7 @@ class CreateBarangsTable extends Migration
             $table->string('nama_barang')->unique();
             $table->integer('qty');
             $table->date('tgl_masuk');
+            $table->string('jurusan');
             $table->timestamps();
         });
     }

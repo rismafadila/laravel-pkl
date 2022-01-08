@@ -25,6 +25,7 @@ Dashboard
                                 <th>Nama Barang</th>
                                 <th>Qty</th>
                                 <th>Tanggal Masuk</th>
+                                <th>Jurusan</th>
                                 <th>Aksi</th>
                             </tr>
                             @php $no=1; @endphp
@@ -34,6 +35,7 @@ Dashboard
                                 <td>{{$data->nama_barang}}</td>
                                 <td>{{$data->qty}}</td>
                                 <td>{{$data->tgl_masuk}}</td>
+                                <td>{{$data->jurusan}}</td>
                                 <td>
                                     <form action="{{route('barang.destroy',$data->id)}}" method="post">
                                         @method('delete')

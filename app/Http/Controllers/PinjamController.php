@@ -59,6 +59,9 @@ class PinjamController extends Controller
         $pinjam->qty = $request->qty;
         $pinjam->tgl_pinjam = $request->tgl_pinjam;
         $pinjam->save();
+        $barang = Barang::findOrFail($request->id_barang);
+        $barang->qty -= $request->qty;
+        $barang->save();
         return redirect()->route('pinjam.index');
     }
 
@@ -111,6 +114,9 @@ class PinjamController extends Controller
         $pinjam->qty = $request->qty;
         $pinjam->tgl_pinjam = $request->tgl_pinjam;
         $pinjam->save();
+        $barang = Barang::findOrFail($request->id_barang);
+        $barang->qty -= $request->qty;
+        $barang->save();
         return redirect()->route('pinjam.index');
     }
 

@@ -52,6 +52,15 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label for="">Jurusan</label>
+                            <input type="text" name="jurusan" value="{{$barang->jurusan}}" class="form-control @error('jurusan') is-invalid @enderror">
+                             @error('jurusan')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <button type="reset" class="btn btn-warning">Reset</button>
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>

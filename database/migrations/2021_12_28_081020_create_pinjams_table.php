@@ -17,7 +17,7 @@ class CreatePinjamsTable extends Migration
             $table->id();
             $table->bigInteger('id_barang')->unsigned();
             $table->string('nama')->unique();
-            $table->bigInteger('telp');
+            $table->string('telp');
             $table->bigInteger('qty');
             $table->date('tgl_pinjam');
             $table->foreign('id_barang')->references('id')
