@@ -107,16 +107,14 @@ class PinjamController extends Controller
             'tgl_pinjam' => 'required',
         ]);
 
-        $pinjam = new pinjam;
+        $pinjam = pinjam::findOrFail($id);
         $pinjam->id_barang = $request->id_barang;
         $pinjam->nama = $request->nama;
         $pinjam->telp = $request->telp;
         $pinjam->qty = $request->qty;
         $pinjam->tgl_pinjam = $request->tgl_pinjam;
         $pinjam->save();
-        $barang = Barang::findOrFail($request->id_barang);
-        $barang->qty -= $request->qty;
-        $barang->save();
+
         return redirect()->route('pinjam.index');
     }
 

@@ -1,10 +1,10 @@
 @extends('adminlte::page')
 
-@section('title','Dashboard')
+@section('title','Barang Masuk')
 
 @section('content_header')
 
-Dashboard
+<h1>Data Barang</h1>
 
 @endsection
 

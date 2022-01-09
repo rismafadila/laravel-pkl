@@ -64,6 +64,9 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
         Route::get('/pengembalian', function(){
             return view ('pengembalian.index');
         });
+        Route::get('/home', function(){
+            return view ('home');
+        });
 
         Route::resource('barang', BarangController::class);
         Route::resource('barang_keluar', BarangKeluarController::class);

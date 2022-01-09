@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title','Dashboard')
+@section('title','Peminjaman')
 
 @section('content_header')
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-12">
-                <h1 class="m-0">Tambah Data Barang Peminjaman</h1>
+                <h1 class="m-0">Tambah Data</h1>
             </div>
         </div>
     </div>

@@ -231,26 +231,28 @@ return [
             'text'         => 'search',
             'topnav_right' => true,
         ],
-        [
-            'type'         => 'fullscreen-widget',
-            'topnav_right' => true,
-        ],
+        // [
+        //     'type'         => 'fullscreen-widget',
+        //     'topnav_right' => true,
+        // ],
 
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
+
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
 
-        ['header' => 'Inventaris Bengkel&Lab'],
+        // ['header' => 'Inventaris Bengkel&Lab'],
+        [
+            'text' => 'Home',
+            'url'  => 'admin/home',
+            'icon' => 'fas fa-home',
+        ],
         [
             'text'    => 'Data Barang',
-            'icon'    => 'far fa-folder-open',
+            'icon'    => 'fas fa-folder-open',
             'submenu' => [
                 [
                     'text' => 'Barang Masuk',

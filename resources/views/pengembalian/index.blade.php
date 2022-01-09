@@ -1,10 +1,10 @@
 @extends('adminlte::page')
 
-@section('title','Dashboard')
+@section('title','Pengembalian')
 
 @section('content_header')
 
-Pengembalian
+<h1>Pengembalian</h1>
 
 @endsection
 
@@ -15,7 +15,7 @@ Pengembalian
             <div class="card">
                 <div class="card-header">
                     Data Pengembalian
-                    <a href="{{route('pengembalian.create')}}" class="btn btn-sm btn-outline-primary float-right">Tambah pengembalian</a>
+                    <a href="{{route('pengembalian.create')}}" class="btn btn-sm btn-outline-primary float-right">Tambah</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
