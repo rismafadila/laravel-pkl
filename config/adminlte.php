@@ -278,7 +278,7 @@ return [
         ],
         [
             'text' => 'History Peminjaman',
-            'url'  => 'admin/history',
+            'url'  => 'admin/laporan',
             'icon' => 'fas fa-fw fa-history',
         ],
 

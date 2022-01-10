@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Laporan;
+use App\Models\pinjam;
 use Illuminate\Http\Request;
 
 class LaporanController extends Controller
@@ -14,7 +15,9 @@ class LaporanController extends Controller
      */
     public function index()
     {
-        //
+        $laporan = laporan::with('pinjam')->get();
+        $pinjam= pinjam::all();
+        return view('laporan.index', compact('laporan','pinjam'));
     }
 
     /**
