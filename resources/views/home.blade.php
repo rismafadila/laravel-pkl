@@ -74,40 +74,76 @@
     </div>
   </div>
 <hr>
+<div class="card">
+  <div class="card-header">
+    Quote
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p> <b>KEUNGGULAN</b> dari SMK Assalaam
+      </p>
+      <footer> <cite title="Source Title"><h3 class="fas fa-check-circle" > Teaching Factory</h3><br>
+        <h3 class="fas fa-check-circle" > Industries Educartion Based</h3><br>
+        <h3 class="fas fa-check-circle" > Terakreaditasi A</h3><br>
+        <h3 class="fas fa-check-circle" > Mendapatkan Sertifikasi Kompetensi</h3><br>
+        <h3 class="fas fa-check-circle" > Menyediakan Peralatan Praktik Yang UP TO DATE</h3><br>
+        <h3 class="fas fa-check-circle" > Mempunyai Budaya Kerja Yang Tinggi dan Terampil Kerja</h3><br>
+      </cite>
+    </footer>
+    </blockquote>
+  </div>
+</div>
 
+<table>
+  <center><i><h4>Atasan</h4></i></center>
+   <tr>
+   <td>
+  <div class="card" >
+      <img src="{{ asset('assets/img/3.jpg') }}" class="card-img-top" style="width:70%;  height:70%;">
+      
+    </div>
+  </td>
+  <td>
+  <div class="card" >
+      <img src="{{ asset('assets/img/3.jpg') }}" class="card-img-top" style="width:70%;  height:70%;">
+      
+    </div>
+  </td>
+  <td>
+      <div class="card" >
+          <img src="{{ asset('assets/img/3.jpg') }}" class="card-img-top" style="width:70%;  height:70%;">
+          
+        </div>
+      </td>
+      
+  </tr>
 
-  {{-- <div class="card-group">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
+</table>
+<table>
+  
+   <tr>
+   <td>
+  <div class="card" >
+      <img src="{{ asset('assets/img/3.jpg') }}" class="card-img-top" style="width:70%;  height:70%;">
+      
     </div>
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
+  </td>
+  <td>
+  <div class="card" >
+      <img src="{{ asset('assets/img/3.jpg') }}" class="card-img-top" style="width:70%;  height:70%;">
+      
     </div>
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div> --}}
+  </td>
+  <td>
+      <div class="card" >
+          <img src="{{ asset('assets/img/3.jpg') }}" class="card-img-top" style="width:70%;  height:70%;">
+          
+        </div>
+      </td>
+      
+  </tr>
+
+</table>
 
   <!-- Footer -->
 <footer class="text-center text-lg-start bg-dark text-muted">
