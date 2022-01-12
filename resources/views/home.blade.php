@@ -94,55 +94,6 @@
   </div>
 </div>
 
-{{-- <table>
-  <center><i><h4><b>FASILITAS</b></h4></i></center>
-   <tr>
-   <td>
-  <div class="card" >
-      <img src="{{ asset('assets/img/1.jfif') }}" class="card-img-top" style="width:50%;  height:50%;">
-
-    </div>
-  </td>
-  <td>
-  <div class="card" >
-      <img src="{{ asset('assets/img/3.jfif') }}" class="card-img-top" style="width:50%;  height:50%;">
-
-    </div>
-  </td>
-  <td>
-      <div class="card" >
-          <img src="{{ asset('assets/img/4.jfif') }}" class="card-img-top" style="width:50%;  height:50%;">
-
-        </div>
-      </td>
-
-  </tr>
-
-
-
-   <tr>
-   <td>
-  <div class="card" >
-      <img src="{{ asset('assets/img/5.jfif') }}" class="card-img-top" style="width:50%;  height:50%;">
-
-    </div>
-  </td>
-  <td>
-  <div class="card" >
-      <img src="{{ asset('assets/img/6.jfif') }}" class="card-img-top" style="width:50%;  height:50%;">
-
-    </div>
-  </td>
-  <td>
-      <div class="card" >
-          <img src="{{ asset('assets/img/8.jpg') }}" class="card-img-top" style="width:50%;  height:50%;">
-
-        </div>
-      </td>
-
-  </tr>
-
-</table> --}}
 
 <div class="card-columns">
   <div class="card">
@@ -220,20 +171,20 @@
   >
     <!-- Left -->
     <div class="me-5 d-none d-lg-block">
-      <span>Follow Us:</span>
+      <span>Follow Us :</span>
     </div>
     <!-- Left -->
 
     <!-- Right -->
     <div>
       <a href="https://www.facebook.com/smkassalaam/" class="me-4 text-reset">
-        <i class="fab fa-facebook">facebook</i>
+        <i class="fab fa-facebook">Facebook</i>
       </a>
       <a href="https://twitter.com/smkassalaam/" class="me-4 text-reset">
-        <i class="fab fa-twitter">twitter</i>
+        <i class="fab fa-twitter">Twitter</i>
       </a>
       <a href="https://www.instagram.com/smkassalaam/" class="me-4 text-reset">
-        <i class="fab fa-instagram">instragram</i>
+        <i class="fab fa-instagram">Instragram</i>
       </a>
     </div>
     <!-- Right -->
