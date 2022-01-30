@@ -15,13 +15,13 @@ class CreatePinjamsTable extends Migration
     {
         Schema::create('pinjams', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_barang')->unsigned();
+            $table->bigInteger('id_data')->unsigned();
             $table->string('nama')->unique();
             $table->string('telp');
             $table->bigInteger('qty');
             $table->date('tgl_pinjam');
-            $table->foreign('id_barang')->references('id')
-            ->on('barangs')->onUpdate('cascade')
+            $table->foreign('id_data')->references('id')
+            ->on('databarangs')->onUpdate('cascade')
             ->onDelete('cascade');
             $table->timestamps();
         });
