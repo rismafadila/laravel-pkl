@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\DataController;
 use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\PinjamController;
 use App\Http\Controllers\PengembalianController;
@@ -56,6 +57,9 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
     Route::get('/barang', function(){
         return view ('barang.index');
     });
+    Route::get('/databarang', function(){
+        return view ('data_barang.index');
+    });
 
     Route::get('/pinjam', function(){
         return view ('peminjaman.index');
@@ -69,6 +73,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
         });
 
         Route::resource('barang', BarangController::class);
+        Route::resource('data_barang', DataController::class);
         Route::resource('barang_keluar', BarangKeluarController::class);
         Route::resource('pinjam', PinjamController::class);
         Route::resource('pengembalian', PengembalianController::class);

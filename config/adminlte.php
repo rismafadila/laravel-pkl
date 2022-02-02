@@ -250,21 +250,27 @@ return [
             'url'  => 'admin/home',
             'icon' => 'fas fa-home',
         ],
-        [
-            'text'    => 'Data Barang',
-            'icon'    => 'fas fa-folder-open',
-            'submenu' => [
+
+
                 [
                     'text' => 'Barang Masuk',
                     'url'  => 'admin/barang',
+                    'icon' => 'fas fa-folder-plus',
+                ],
+
+                [
+                    'text' => 'Data Barang',
+                    'url'  => 'admin/data_barang',
+                    'icon' => 'fas fa-box-open',
                 ],
 
                 [
                     'text' => 'Barang Keluar',
                     'url'  => 'admin/barang_keluar',
+                    'icon' => 'fas fa-folder-minus',
                 ],
-            ],
-        ],
+
+
 
         [
             'text' => 'Peminjaman',

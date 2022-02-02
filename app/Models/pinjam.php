@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class pinjam extends Model
 {
     use HasFactory;
-    protected $visible =['id_barang','nama','telp','qty','tgl_pinjam'];
-    protected $fillable =['id_barang','nama','telp','qty','tgl_pinjam'];
+    protected $visible =['id_data','nama','telp','qty','tgl_pinjam'];
+    protected $fillable =['id_data','nama','telp','qty','tgl_pinjam'];
     public $timestamps = true;
 
-    public function barang(){
+    public function data_barang(){
 
-        return $this->belongsTo('App\Models\Barang','id_barang');
+        return $this->belongsTo('App\Models\Databarang','id_data');
 
     }
     public function pengembalian(){

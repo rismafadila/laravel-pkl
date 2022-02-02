@@ -33,10 +33,10 @@
                             @foreach($pinjam as $data)
                             <tr>
                                 <td>{{$no++}}</td>
-                                <td>{{ $data->barang->nama_barang }}</td>
+                                <td>{{ $data->data_barang->nama_barang }}</td>
                                 <td>{{$data->nama}}</td>
                                 <td>{{$data->telp}}</td>
-                                <td>{{$data->qty}}</td>
+                                <td>{{$data->stok}}</td>
                                 <td>{{$data->tgl_pinjam}}</td>
                                 <td>
                                     <form action="{{route('pinjam.destroy',$data->id)}}" method="post">

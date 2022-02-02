@@ -18,7 +18,7 @@ class BarangKeluarController extends Controller
     }
     public function index()
     {
-        $barang_keluar = Barang_keluar::with('barang')->get();
+        $barang_keluar = Barang_keluar::with('data_barang')->get();
         return view('barang_keluar.index', compact('barang_keluar'));
     }
 

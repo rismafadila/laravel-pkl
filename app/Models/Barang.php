@@ -15,11 +15,5 @@ class Barang extends Model
      //mencatat waktu pembuatan dan update data otomatis
      public $timestamps = true;
 
-     public function barang_keluar(){
-        return $this->belongsTo('App\Models\Barang_keluar','id_barang');
-}
 
-public function pinjam(){
-    return $this->belongsTo('App\Models\pinjam','id_barang');
-}
 }

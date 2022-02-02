@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\pinjam;
-use App\Models\Barang;
+use App\Models\databarang;
 
 use Illuminate\Http\Request;
 
@@ -20,7 +20,7 @@ class PinjamController extends Controller
     }
     public function index()
     {
-        $pinjam = pinjam::with('barang')->get();
+        $pinjam = pinjam::with('data_barang')->get();
         return view('pinjam.index', compact('pinjam'));
     }
 
@@ -32,8 +32,8 @@ class PinjamController extends Controller
     public function create()
     {
         $pinjam = pinjam::all();
-        $barang= Barang::all();
-        return view('pinjam.create', compact('pinjam','barang'));
+        $data_barang= databarang::all();
+        return view('pinjam.create', compact('pinjam','data_barang'));
     }
 
     /**
@@ -45,23 +45,23 @@ class PinjamController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_barang' => 'required',
+            'id_data' => 'required',
             'nama' => 'required',
             'telp' => 'required',
-            'qty' => 'required',
+            'stok' => 'required',
             'tgl_pinjam' => 'required',
         ]);
 
         $pinjam = new Pinjam;
-        $pinjam->id_barang = $request->id_barang;
+        $pinjam->id_data = $request->id_data;
         $pinjam->nama = $request->nama;
         $pinjam->telp = $request->telp;
-        $pinjam->qty = $request->qty;
+        $pinjam->stok = $request->stok;
         $pinjam->tgl_pinjam = $request->tgl_pinjam;
         $pinjam->save();
-        $barang = Barang::findOrFail($request->id_barang);
-        $barang->qty -= $request->qty;
-        $barang->save();
+        $data_barang = databarang::findOrFail($request->id_data);
+        $data_barang->stok -= $request->stok;
+        $data_barang->save();
         return redirect()->route('pinjam.index');
     }
 
@@ -86,8 +86,8 @@ class PinjamController extends Controller
     public function edit($id)
     {
         $pinjam = pinjam::findOrFail($id);
-        $barang= Barang::all();
-        return view('pinjam.edit', compact('pinjam', 'barang'));
+        $data_barang= databarang::all();
+        return view('pinjam.edit', compact('pinjam', 'data_barang'));
     }
 
     /**
@@ -100,20 +100,21 @@ class PinjamController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'id_barang' => 'required',
+            'id_data' => 'required',
             'nama' => 'required',
             'telp' => 'required',
-            'qty' => 'required',
+            'stok' => 'required',
             'tgl_pinjam' => 'required',
         ]);
 
-        $pinjam = pinjam::findOrFail($id);
-        $pinjam->id_barang = $request->id_barang;
+        $pinjam = new Pinjam;
+        $pinjam->id_data = $request->id_data;
         $pinjam->nama = $request->nama;
         $pinjam->telp = $request->telp;
-        $pinjam->qty = $request->qty;
+        $pinjam->stok = $request->stok;
         $pinjam->tgl_pinjam = $request->tgl_pinjam;
         $pinjam->save();
+
 
         return redirect()->route('pinjam.index');
     }

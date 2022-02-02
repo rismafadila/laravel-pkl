@@ -4,7 +4,7 @@
 
 @section('content_header')
 
-<h1>Data Barang</h1>
+Data Barang
 
 @endsection
 
@@ -14,7 +14,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Data Data Barang
+                    Data Barang
                     <a href="{{route('data_barang.create')}}" class="btn btn-sm btn-outline-primary float-right">Tambah</a>
                 </div>
                 <div class="card-body">
@@ -23,15 +23,17 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Barang</th>
-                                <th>Qty</th>
+                                <th>Stok</th>
+                                <th>Jurusan</th>
                                 <th>Aksi</th>
                             </tr>
                             @php $no=1; @endphp
                             @foreach($data_barang as $data)
                             <tr>
                                 <td>{{$no++}}</td>
-                                <td>{{ $data->barang->nama_barang }}</td>
-                                <td>{{$data->qty}}</td>
+                                <td>{{ $data->nama_barang }}</td>
+                                <td>{{$data->stok}}</td>
+                                <td>{{$data->jurusan}}</td>
                                 <td>
                                     <form action="{{route('data_barang.destroy',$data->id)}}" method="post">
                                         @method('delete')
