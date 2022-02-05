@@ -15,11 +15,12 @@ class CreateBarangKeluarsTable extends Migration
     {
         Schema::create('barang_keluars', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_barang')->unsigned();
+            $table->bigInteger('id_data')->unsigned();
             $table->bigInteger('qty');
             $table->date('tgl_keluar');
-            $table->foreign('id_barang')->references('id')
-            ->on('barangs')->onUpdate('cascade')
+            $table->string('kondisi');
+            $table->foreign('id_data')->references('id')
+            ->on('databarangs')->onUpdate('cascade')
             ->onDelete('cascade');
             $table->timestamps();
         });

@@ -24,4 +24,8 @@ class databarang extends Model
 public function pinjam(){
     return $this->belongsTo('App\Models\pinjam','id_data');
 }
+
+public function laporan(){
+    return $this->belongsTo('App\Models\Laporan','id_data');
+}
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\databarang;
 use App\Models\Pinjam;
 use App\Models\Pengembalian;
 use Illuminate\Http\Request;
@@ -30,7 +31,8 @@ class PengembalianController extends Controller
     public function create()
     {
         $pinjam = Pinjam::all();
-        return view('pengembalian.create', compact('pinjam'));
+        $data_barang = databarang::all();
+        return view('pengembalian.create', compact('pinjam','data_barang'));
     }
 
     /**
@@ -52,6 +54,9 @@ class PengembalianController extends Controller
         $pengembalian->qty = $request->qty;
         $pengembalian->tgl_kembali = $request->tgl_kembali;
         $pengembalian->save();
+        $data_barang = databarang::findOrFail($request->id_data);
+        $data_barang->stok += $request->qty;
+        $data_barang->save();
         return redirect()->route('pengembalian.index');
     }
 
@@ -77,7 +82,8 @@ class PengembalianController extends Controller
     {
         $pengembalian = Pengembalian::findOrFail($id);
         $pinjam = Pinjam::all();
-        return view('pengembalian.edit', compact('pengembalian', 'pinjam'));
+        $data_barang = databarang::all();
+        return view('pengembalian.edit', compact('pengembalian','pinjam','data_barang'));
     }
 
     /**

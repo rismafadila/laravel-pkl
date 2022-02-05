@@ -283,7 +283,7 @@ return [
             'icon' => 'fas fa-fw fa-undo-alt',
         ],
         [
-            'text' => 'History Peminjaman',
+            'text' => 'Laporan Peminjaman',
             'url'  => 'admin/laporan',
             'icon' => 'fas fa-fw fa-history',
         ],

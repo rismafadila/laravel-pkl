@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Laporan;
+use App\Models\databarang;
+use App\Models\Pengembalian;
 use App\Models\pinjam;
 use Illuminate\Http\Request;
 
@@ -17,7 +19,9 @@ class LaporanController extends Controller
     {
         $laporan = laporan::with('pinjam')->get();
         $pinjam= pinjam::all();
-        return view('laporan.index', compact('laporan','pinjam'));
+        $data_barang= databarang::all();
+        $pengembalian= Pengembalian::all();
+        return view('laporan.index', compact('laporan','pinjam','data_barang','pengembalian'));
     }
 
     /**
@@ -27,7 +31,11 @@ class LaporanController extends Controller
      */
     public function create()
     {
-        //
+        $laporan = Laporan::all();
+        $pinjam= pinjam::all();
+        $data_barang= databarang::all();
+        $pengembalian= Pengembalian::all();
+        return view('laporan.create', compact('laporan','pinjam','data_barang','pengembalian'));
     }
 
     /**
@@ -38,7 +46,20 @@ class LaporanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_data' => 'required',
+            'id_pinjem' => 'required',
+            'id_kembali' => 'required',
+            'jurusan' => 'required',
+        ]);
+
+        $laporan = new Laporan;
+        $laporan->id_data = $request->id_data;
+        $laporan->id_pinjem = $request->id_pinjem;
+        $laporan->id_kembali = $request->id_kembali;
+        $laporan->jurusan = $request->jurusan;
+        $laporan->save();
+        return redirect()->route('laporan.index');
     }
 
     /**

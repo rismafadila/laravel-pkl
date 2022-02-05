@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title','History')
+@section('title','Laporan')
 
 @section('content_header')
 
@@ -14,22 +14,30 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    History Peminjaman
+                    Data Laporan
+                    <a href="{{route('laporan.create')}}" class="btn btn-sm btn-outline-primary float-right">Tambah</a>
                 </div>
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
                                 <th>No</th>
+                                <th>Nama Barang</th>
                                 <th>Nama</th>
-                                <th>Status</th>
+                                <th>Tanggal Pinjam</th>
+                                <th>Tanggal Kembali</th>
+                                <th>Jurusan</th>
                             </tr>
                             @php $no=1; @endphp
                             @foreach($laporan as $data)
                             <tr>
                                 <td>{{$no++}}</td>
+                                <td>{{ $data->data_barang->nama_barang }}</td>
                                 <td>{{ $data->pinjam->nama }}</td>
-                                <td>{{$data->status}}</td>
+                                <td>{{ $data->pinjam->tgl_pinjam }}</td>
+                                <td>{{ $data->pengembalian->tgl_kembali }}</td>
+                                <td>{{$data->jurusan}}</td>
                                 <td>
 
                                 </td>

@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title','Barang Keluar')
+@section('title','laporan')
 
 @section('content_header')
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-12">
-                <h1 class="m-0">Tambah Data Barang Keluar</h1>
+                <h1 class="m-0">Tambah Data Laporan</h1>
             </div>
         </div>
     </div>
@@ -20,9 +20,9 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Data Barang Keluar</div>
+                <div class="card-header">Data Laporan</div>
                 <div class="card-body">
-                   <form action="{{route('barang_keluar.store')}}" method="post">
+                   <form action="{{route('laporan.store')}}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="">Nama Barang</label>
@@ -38,32 +38,59 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="">Masukan Jumlah</label>
-                            <input type="number" name="qty" class="form-control @error('qty') is-invalid @enderror">
-                             @error('qty')
+                            <label for="">Nama</label>
+                            <select name="id_pinjem" class="form-control @error('id_pinjem') is-invalid @enderror" >
+                                @foreach($pinjam as $data)
+                                    <option value="{{$data->id}}">{{$data->nama}}</option>
+                                @endforeach
+                            </select>
+                            @error('id_pinjem')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="">Masukan Tanggal Keluar</label>
-                            <input type="date" name="tgl_keluar" class="form-control @error('tgl_keluar') is-invalid @enderror">
-                             @error('tgl_keluar')
+                            <label for="">Tanggal Pinjam</label>
+                            <select name="id_pinjem" class="form-control @error('id_pinjem') is-invalid @enderror" >
+                                @foreach($pinjam as $data)
+                                    <option value="{{$data->id}}">{{$data->tgl_pinjam}}</option>
+                                @endforeach
+                            </select>
+                            @error('id_pinjem')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="">Kondisi </label>
-                            <input type="text" name="kondisi" class="form-control @error('kondisi') is-invalid @enderror">
-                             @error('kondisi')
+                            <label for="">Tanggal Kembali</label>
+                            <select name="id_kembali" class="form-control @error('id_kembali') is-invalid @enderror" >
+                                @foreach($pengembalian as $data)
+                                    <option value="{{$data->id}}">{{$data->tgl_kembali}}</option>
+                                @endforeach
+                            </select>
+                            @error('id_kembali')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label for="">Jurusan</label> <br>
+                            <input type="radio" name="jurusan" value="RPL" > RPL
+                            <br>
+                            <input type="radio" name="jurusan" value="TKRO"> TKRO
+                            <br>
+                            <input type="radio" name="jurusan" value="TBSM"> TBSM
+                            <br>
+                             @error('jurusan')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
                         <div class="form-group">
                             <button type="reset" class="btn btn-outline-warning">Reset</button>
                             <button type="submit" class="btn btn-outline-primary">Simpan</button>

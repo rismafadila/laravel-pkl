@@ -26,12 +26,12 @@
                         @method('put')
                         <div class="form-group">
                             <label for="">Nama Barang</label>
-                            <select name="id_barang" class="form-control @error('id_barang') is-invalid @enderror" >
-                                @foreach($barang as $data)
+                            <select name="id_data" class="form-control @error('id_data') is-invalid @enderror" >
+                                @foreach($data_barang as $data)
                                     <option value="{{$data->id}}">{{$data->nama_barang}}</option>
                                 @endforeach
                             </select>
-                            @error('id_barang')
+                            @error('id_data')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -50,6 +50,15 @@
                             <label for="">Tanggal keluar</label>
                             <input type="date" name="tgl_keluar" value="{{$barang_keluar->tgl_keluar}}" class="form-control @error('tgl_keluar') is-invalid @enderror">
                              @error('tgl_keluar')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="">Kondisi</label>
+                            <input type="text" name="kondisi" value="{{$barang_keluar->kondisi}}" class="form-control @error('kondisi') is-invalid @enderror">
+                             @error('kondisi')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

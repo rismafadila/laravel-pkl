@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-header">
                     Data peminjaman
-                    <a href="{{route('pinjam.create')}}" class="btn btn-sm btn-outline-primary float-right">Tambah peminjaman</a>
+                    <a href="{{route('pinjam.create')}}" class="btn btn-sm btn-outline-primary float-right">Tambah</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

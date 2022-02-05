@@ -19,7 +19,7 @@
                         <input type="text" name="id_pinjam" value="{{ $pengembalian->peminjaman->nama }}" class="form-control" readonly>
                     </div>
                     <div class="form-group">
-                        <label for=""> Jumlah</label>
+                        <label for="">Jumlah</label>
                         <input type="number" name="qty" value="{{$pengembalian->qty}}" class="form-control" readonly>
                     </div>
                     <div class="form-group">
