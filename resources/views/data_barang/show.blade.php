@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title','Barang Masuk')
+@section('title','Data Barang')
 
 @section('content_header')
 
@@ -16,19 +16,16 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for=""> Nama Barang</label>
-                        <input type="text" name="nama_barang" value="{{$barang->nama_barang}}" class="form-control" readonly>
+                        <input type="text" name="nama_barang" value="{{$data_barang->nama_barang}}" class="form-control" readonly>
                     </div>
                     <div class="form-group">
                         <label for=""> Jumlah</label>
-                        <input type="number" name="qty" value="{{$barang->qty}}" class="form-control" readonly>
+                        <input type="number" name="qty" value="{{$data_barang->qty}}" class="form-control" readonly>
                     </div>
-                    <div class="form-group">
-                        <label for="">Tanggal Masuk</label>
-                        <input type="date" name="tgl_masuk" value="{{$barang->tgl_masuk}}" class="form-control" readonly>
-                    </div>
+
                     <div class="form-group">
                         <label for="">Jurusan</label>
-                        <input type="text" name="jurusan" value="{{$barang->jurusan}}" class="form-control" readonly>
+                        <input type="text" name="jurusan" value="{{$data_barang->jurusan}}" class="form-control" readonly>
                     </div>
                     <div class="form-group">
                         <a href="{{route('barang.index')}}" class="btn btn-block btn-primary">Kembali</a>

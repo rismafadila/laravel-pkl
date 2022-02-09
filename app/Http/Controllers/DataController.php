@@ -75,9 +75,9 @@ class DataController extends Controller
      */
     public function edit($id)
     {
-        $data_barang = data_barang::findOrFail($id);
-        $barang= Barang::all();
-        return view('data_barang.edit', compact('data_barang', 'barang'));
+        $data_barang = databarang::findOrFail($id);
+
+        return view('data_barang.edit', compact('data_barang'));
     }
 
     /**
@@ -89,19 +89,19 @@ class DataController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'id_barang' => 'required',
-            'qty' => 'required',
-            'tgl_keluar' => 'required',
+        $validated = $request->validate([
+            'nama_barang' => 'required',
+            'stok' => 'required',
+            'jurusan' => 'required',
 
         ]);
 
-        $barang_keluar = Barang_keluar::findOrFail($id);
-        $barang_keluar->id_barang = $request->id_barang;
-        $barang_keluar->qty = $request->qty;
-        $barang_keluar->tgl_keluar = $request->tgl_keluar;
-        $barang_keluar->save();
-        return redirect()->route('barang_keluar.index');
+        $data_barang = databarang::findOrFail($id);
+        $data_barang->nama_barang = $request->nama_barang;
+        $data_barang->stok = $request->stok;
+        $data_barang->jurusan = $request->jurusan;
+        $data_barang->save();
+        return redirect()->route('data_barang.index');
     }
 
     /**
@@ -112,8 +112,8 @@ class DataController extends Controller
      */
     public function destroy($id)
     {
-        $barang_keluar = Barang_keluar::findOrFail($id);
-        $barang_keluar->delete();
-        return redirect()->route('barang_keluar.index');
+        $data_barang = databarang::findOrFail($id);
+        $data_barang->delete();
+        return redirect()->route('data_barang.index');
     }
 }

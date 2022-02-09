@@ -15,25 +15,8 @@
     </figcaption>
   </figure>
 
-  {{-- <table>
-  <tr>
-    <td>
-   <div class="card" >
-       <img src="{{ asset('assets/img/1.jpg') }}" class="card-img-top" style="width:70%;  height:70%;">
-     </div>
-   </td>
-   <td>
-    <div class="card" >
-        <img src="{{ asset('assets/img/2.jpg') }}" class="card-img-top" style="width:70%;  height:70%;">
-      </div>
-    </td>
-    <td>
-        <div class="card" >
-            <img src="{{ asset('assets/img/3.jpg') }}" class="card-img-top" style="width:70%;  height:70%;">
-          </div>
-        </td>
-   </tr>
-</table> --}}
+
+
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col">
@@ -44,7 +27,7 @@
           <p class="card-text">SMK Assalaam didukung oleh sarana praktek yang lengkap UP TO DATE</p>
         </div>
         <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
+          <small class="text-muted"></small>
         </div>
       </div>
     </div>
@@ -56,7 +39,7 @@
           <p class="card-text">waktu praktek memadai</p>
         </div>
         <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
+          <small class="text-muted"></small>
         </div>
       </div>
     </div>
@@ -68,7 +51,7 @@
           <p class="card-text">praktek berstandar industri dengan pelayanan prima</p>
         </div>
         <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
+          <small class="text-muted"></small>
         </div>
       </div>
     </div>
@@ -120,7 +103,7 @@
       <h5 class="card-title"><b>Fasilitas</b></h5>
       <p class="card-text">Memiliki Unit Produksi SMK Assalaam Yang Menjadi Laboratorium Langsung Bagi Siswa
           Dalam Mengembangkan Keterampilan Kejuruannya. </p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      <p class="card-text"><small class="text-muted"></small></p>
     </div>
   </div>
   <div class="card bg-primary text-white text-center p-3">
@@ -137,7 +120,7 @@
     <div class="card-body">
       <h5 class="card-title"><b>Lulusan</b></h5>
       <p class="card-text">Lulusan SMK Assalaam Dibekali Dengan Kemampuan Yang Disesuaikan Kebutuhan Industri. </p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      <p class="card-text"><small class="text-muted"></small></p>
     </div>
   </div>
   <div class="card">
@@ -158,7 +141,7 @@
       <h5 class="card-title">Motto SMK Assalaam</h5>
       <p class="card-text">kesuksesan diawali oleh perubahan, perubahan terjadi pada orang yang aktif,
           kreatif dan inovatif.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      <p class="card-text"><small class="text-muted"></small></p>
     </div>
   </div>
 </div>

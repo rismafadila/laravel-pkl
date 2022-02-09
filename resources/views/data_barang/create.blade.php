@@ -35,13 +35,20 @@
                         </div>
                         <div class="form-group">
                             <label for="">Masukan Stok</label>
-                            <input type="number" name="stok" class="form-control @error('stok') is-invalid @enderror">
+                            <input type="number" name="stok" min="1" class="form-control @error('stok') is-invalid @enderror">
+                            <option value="1">*Tidak dapat menggunakan text</option>
                              @error('stok')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
+                        {{-- <div class="panel-body">
+                            <label>Jumlah</label>
+                            <input type="number" class="form-control" name="stok" min="1">
+                            <option value="1">*Tidak dapat menggunakan text</option>
+                            @error('jumlah') {{ $message }} @enderror
+                        </div> --}}
                         <div class="form-group">
                             <label for="">Jurusan</label> <br>
                             <input type="radio" name="jurusan" value="RPL" > RPL

@@ -4,7 +4,7 @@
 
 @section('content_header')
 
-<h1>Barang Keluar</h1>
+<h1><b>Barang Keluar</b></h1>
 
 @endsection
 
@@ -14,7 +14,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Data Barang Keluar
+
                     <a href="{{route('barang_keluar.create')}}" class="btn btn-sm btn-outline-primary float-right">Tambah</a>
                 </div>
                 <div class="card-body">

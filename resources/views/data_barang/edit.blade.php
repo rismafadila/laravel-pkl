@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title','Barang Masuk')
+@section('title','Data Barang')
 
 @section('content_header')
 <div class="content-header">
@@ -21,12 +21,12 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-body">
-                   <form action="{{route('barang.update',$barang->id)}}" method="post">
+                   <form action="{{route('data_barang.update',$data_barang->id)}}" method="post">
                         @csrf
                         @method('put')
                         <div class="form-group">
                             <label for="">Nama barang</label>
-                            <input type="text" name="nama_barang" value="{{$barang->nama_barang}}" class="form-control @error('nama_barang') is-invalid @enderror">
+                            <input type="text" name="nama_barang" value="{{$data_barang->nama_barang}}" class="form-control @error('nama_barang') is-invalid @enderror">
                              @error('nama_barang')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -35,25 +35,17 @@
                         </div>
                         <div class="form-group">
                             <label for="">Jumlah</label>
-                            <input type="number" name="qty" value="{{$barang->qty}}" class="form-control @error('qty') is-invalid @enderror">
-                             @error('qty')
-                                <span class="invalid-feedback" role="alert">
+                            <input type="number" name="stok" min="1" value="{{$data_barang->stok}}" class="form-control @error('stok') is-invalid @enderror">
+                             @error('stok')
+                             <option value="1">*Tidak dapat menggunakan text</option>
+                                {{-- <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="">Tanggal Masuk</label>
-                            <input type="date" name="tgl_masuk" value="{{$barang->tgl_masuk}}" class="form-control @error('tgl_masuk') is-invalid @enderror">
-                             @error('tgl_masuk')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                </span> --}}
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="">Jurusan</label>
-                            <input type="text" name="jurusan" value="{{$barang->jurusan}}" class="form-control @error('jurusan') is-invalid @enderror">
+                            <input type="text" name="jurusan" value="{{$data_barang->jurusan}}" class="form-control @error('jurusan') is-invalid @enderror">
                              @error('jurusan')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

@@ -54,9 +54,9 @@ class PengembalianController extends Controller
         $pengembalian->qty = $request->qty;
         $pengembalian->tgl_kembali = $request->tgl_kembali;
         $pengembalian->save();
-        $data_barang = databarang::findOrFail($request->id_data);
-        $data_barang->stok += $request->qty;
-        $data_barang->save();
+        // $data_barang = databarang::findOrFail($request->id_data);
+        // $data_barang->qty += $request->stok;
+        // $data_barang->save();
         return redirect()->route('pengembalian.index');
     }
 
