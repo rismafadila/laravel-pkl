@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\pinjam;
 use App\Models\databarang;
-
+use Alert;
 use Illuminate\Http\Request;
 
 class PinjamController extends Controller
@@ -62,6 +62,7 @@ class PinjamController extends Controller
         $data_barang = databarang::findOrFail($request->id_data);
         $data_barang->stok -= $request->stok;
         $data_barang->save();
+        Alert::success('Good Job','Data saved successfully');
         return redirect()->route('pinjam.index');
     }
 
@@ -115,7 +116,7 @@ class PinjamController extends Controller
         $pinjam->tgl_pinjam = $request->tgl_pinjam;
         $pinjam->save();
 
-
+        Alert::success('Good Job','Data edited successfully');
         return redirect()->route('pinjam.index');
     }
 

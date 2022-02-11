@@ -5,7 +5,7 @@ use App\Models\databarang;
 use App\Models\Pinjam;
 use App\Models\Pengembalian;
 use Illuminate\Http\Request;
-
+use Alert;
 class PengembalianController extends Controller
 {
     /**
@@ -54,6 +54,7 @@ class PengembalianController extends Controller
         $pengembalian->qty = $request->qty;
         $pengembalian->tgl_kembali = $request->tgl_kembali;
         $pengembalian->save();
+        Alert::success('Good Job','Data saved successfully');
         // $data_barang = databarang::findOrFail($request->id_data);
         // $data_barang->qty += $request->stok;
         // $data_barang->save();
@@ -107,6 +108,7 @@ class PengembalianController extends Controller
         $pengembalian->qty = $request->qty;
         $pengembalian->tgl_kembali = $request->tgl_kembali;
         $pengembalian->save();
+        Alert::success('Good Job','Data edited successfully');
         return redirect()->route('pengembalian.index');
     }
 

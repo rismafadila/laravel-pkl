@@ -26,12 +26,12 @@
                         @method('put')
                         <div class="form-group">
                             <label for="">Nama Barang</label>
-                            <select name="id_barang" class="form-control @error('id_barang') is-invalid @enderror" disabled>
-                                @foreach($barang as $data)
+                            <select name="id_data" class="form-control @error('id_data') is-invalid @enderror" disabled>
+                                @foreach($data_barang as $data)
                                     <option value="{{$data->id}}">{{$data->nama_barang}}</option>
                                 @endforeach
                             </select>
-                            @error('id_barang')
+                            @error('id_data')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -57,8 +57,8 @@
                         </div>
                         <div class="form-group">
                             <label for="">Jumlah</label>
-                            <input type="number" name="qty" value="{{$pinjam->qty}}" class="form-control @error('qty') is-invalid @enderror">
-                             @error('qty')
+                            <input type="number" name="stok" value="{{$pinjam->stok}}" class="form-control @error('stok') is-invalid @enderror">
+                             @error('stok')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

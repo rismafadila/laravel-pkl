@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\databarang;
 use App\Models\Barang_keluar;
 use Illuminate\Http\Request;
-
+use Alert;
 class BarangKeluarController extends Controller
 {
     /**
@@ -58,6 +58,7 @@ class BarangKeluarController extends Controller
         $data_barang = databarang::findOrFail($request->id_data);
         $data_barang->stok -= $request->qty;
         $data_barang->save();
+        Alert::success('Good Job','Data saved successfully');
         return redirect()->route('barang_keluar.index');
     }
 
@@ -108,6 +109,7 @@ class BarangKeluarController extends Controller
         $barang_keluar->tgl_keluar = $request->tgl_keluar;
         $barang_keluar->kondisi = $request->kondisi;
         $barang_keluar->save();
+        Alert::success('Good Job','Data edited successfully');
         return redirect()->route('barang_keluar.index');
     }
 

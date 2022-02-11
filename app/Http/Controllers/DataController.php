@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\databarang;
 use Illuminate\Http\Request;
-
+use Alert;
 class DataController extends Controller
 {
     /**
@@ -52,6 +52,7 @@ class DataController extends Controller
         $data_barang->stok = $request->stok;
         $data_barang->jurusan = $request->jurusan;
         $data_barang->save();
+        Alert::success('Good Job','Data saved successfully');
         return redirect()->route('data_barang.index');
     }
 
@@ -101,6 +102,7 @@ class DataController extends Controller
         $data_barang->stok = $request->stok;
         $data_barang->jurusan = $request->jurusan;
         $data_barang->save();
+        Alert::success('Good Job','Data edited successfully');
         return redirect()->route('data_barang.index');
     }
 
@@ -112,8 +114,14 @@ class DataController extends Controller
      */
     public function destroy($id)
     {
-        $data_barang = databarang::findOrFail($id);
-        $data_barang->delete();
+        // $data_barang = databarang::findOrFail($id);
+        // $data_barang->delete();
+        // return redirect()->route('data_barang.index');
+
+        if (!databarang::destroy($id)) {
+            return redirect()->back();
+        }
+        Alert::success('Success', 'Data deleted successfully');
         return redirect()->route('data_barang.index');
     }
 }
