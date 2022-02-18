@@ -26,12 +26,12 @@
                         @csrf
                         <div class="form-group">
                             <label for="">Nama Barang</label>
-                            <select name="id_data" class="form-control @error('id_data') is-invalid @enderror" >
-                                @foreach($data_barang as $data)
+                            <select name="id_barang" class="form-control @error('id_barang') is-invalid @enderror" >
+                                @foreach($barangmasuk as $data)
                                     <option value="{{$data->id}}">{{$data->nama_barang}}</option>
                                 @endforeach
                             </select>
-                            @error('id_data')
+                            @error('id_barang')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

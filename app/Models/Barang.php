@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Alert;
 
 class Barang extends Model
 {
@@ -16,5 +16,20 @@ class Barang extends Model
      //mencatat waktu pembuatan dan update data otomatis
      public $timestamps = true;
 
+     public function barangmasuk(){
 
+        return $this->belongsTo('App\Models\Barang','id_barang');
+
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+        self::deleting(function ($barangmasuk) {
+            if ($barangmasuk->barang_keluar->count() > 0) {
+                Alert::error('Failed', 'Data not deleted');
+                return false;
+            }
+        });
+    }
 }

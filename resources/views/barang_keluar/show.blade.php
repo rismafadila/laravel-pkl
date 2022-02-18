@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for=""> Nama Barang</label>
-                        <input type="text" name="id_data" value="{{ $barang_keluar->data_barangbarang->nama_barang }}" class="form-control" readonly>
+                        <input type="text" name="id_barang" value="{{ $barang_keluar->barangmasuk->nama_barang }}" class="form-control" readonly>
                     </div>
                     <div class="form-group">
                         <label for=""> Jumlah</label>

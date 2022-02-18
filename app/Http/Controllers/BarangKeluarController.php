@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\databarang;
+use App\Models\Barang;
 use App\Models\Barang_keluar;
 use Illuminate\Http\Request;
 use Alert;
@@ -18,7 +18,7 @@ class BarangKeluarController extends Controller
     }
     public function index()
     {
-        $barang_keluar = Barang_keluar::with('data_barang')->get();
+        $barang_keluar = Barang_keluar::with('barangmasuk')->get();
         return view('barang_keluar.index', compact('barang_keluar'));
     }
 
@@ -29,8 +29,8 @@ class BarangKeluarController extends Controller
      */
     public function create()
     {
-        $data_barang = databarang::all();
-        return view('barang_keluar.create', compact('data_barang'));
+        $barangmasuk = Barang::all();
+        return view('barang_keluar.create', compact('barangmasuk'));
     }
 
     /**
@@ -42,7 +42,7 @@ class BarangKeluarController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_data' => 'required',
+            'id_barang' => 'required',
             'qty' => 'required',
             'tgl_keluar' => 'required',
             'kondisi' => 'required',
@@ -50,14 +50,14 @@ class BarangKeluarController extends Controller
         ]);
 
         $barang_keluar = new Barang_keluar;
-        $barang_keluar->id_data = $request->id_data;
+        $barang_keluar->id_barang = $request->id_barang;
         $barang_keluar->qty = $request->qty;
         $barang_keluar->tgl_keluar = $request->tgl_keluar;
         $barang_keluar->kondisi = $request->kondisi;
         $barang_keluar->save();
-        $data_barang = databarang::findOrFail($request->id_data);
-        $data_barang->stok -= $request->qty;
-        $data_barang->save();
+        $barangmasuk = Barang::findOrFail($request->id_barang);
+        $barangmasuk->qty -= $request->qty;
+        $barangmasuk->save();
         Alert::success('Good Job','Data saved successfully');
         return redirect()->route('barang_keluar.index');
     }
@@ -83,8 +83,8 @@ class BarangKeluarController extends Controller
     public function edit($id)
     {
         $barang_keluar = Barang_keluar::findOrFail($id);
-        $data_barang= databarang::all();
-        return view('barang_keluar.edit', compact('barang_keluar', 'data_barang'));
+        $barangmasuk= Barang::all();
+        return view('barang_keluar.edit', compact('barang_keluar', 'barangmasuk'));
     }
 
     /**

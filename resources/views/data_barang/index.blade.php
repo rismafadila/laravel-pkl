@@ -8,7 +8,7 @@
 
 @endsection
 
-@section('js')
+{{-- @section('js')
 <script src="{{asset('js/sweetalert2.js')}}"></script>
 <script>
     $(".delete-confirm").click(function (event) {
@@ -30,7 +30,7 @@
         });
     });
 </script>
-@endsection
+@endsection --}}
 
 
 @section('content')
@@ -40,7 +40,7 @@
             <div class="card">
                 <div class="card-header">
 
-                    <a href="{{route('data_barang.create')}}" class="btn btn-sm btn-outline-primary float-right">Tambah</a>
+                    {{-- <a href="{{route('data_barang.create')}}" class="btn btn-sm btn-outline-primary float-right">Tambah</a> --}}
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -48,25 +48,25 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Barang</th>
-                                <th>Stok</th>
+                                {{-- <th>Stok</th> --}}
                                 <th>Jurusan</th>
-                                <th>Aksi</th>
+                                {{-- <th>Aksi</th> --}}
                             </tr>
                             @php $no=1; @endphp
-                            @foreach($data_barang as $data)
+                            @foreach($data as $data)
                             <tr>
                                 <td>{{$no++}}</td>
-                                <td>{{ $data->nama_barang }}</td>
-                                <td>{{$data->stok}}</td>
+                                <td>{{ $data->barangmasuk->nama_barang }}</td>
+                                {{-- <td>{{$data->stok}}</td> --}}
                                 <td>{{$data->jurusan}}</td>
                                 <td>
-                                    <form action="{{route('data_barang.destroy',$data->id)}}" method="post">
+                                    {{-- <form action="{{route('data_barang.destroy',$data->id)}}" method="post">
                                         @method('delete')
                                         @csrf
                                         <a href="{{route('data_barang.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
                                         <a href="{{route('data_barang.show',$data->id)}}" class="btn btn-outline-warning">Show</a>
                                         <button type="submit" class="btn btn-outline-danger delete-confirm">Delete</button>
-                                    </form>
+                                    </form> --}}
                                 </td>
                             </tr>
                             @endforeach

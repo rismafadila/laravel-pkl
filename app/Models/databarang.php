@@ -8,11 +8,11 @@ use Alert;
 class databarang extends Model
 {
     use HasFactory;
-    protected $visible =['nama_barang','stok','jurusan'];
-    protected $fillable =['nama_barang','stok','jurusan'];
+    protected $visible =['id_barang','jurusan'];
+    protected $fillable =['id_barang','jurusan'];
     public $timestamps = true;
 
-    public function barang(){
+    public function barangmasuk(){
 
         return $this->belongsTo('App\Models\Barang','id_barang');
 

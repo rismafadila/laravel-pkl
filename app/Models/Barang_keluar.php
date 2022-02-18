@@ -12,9 +12,9 @@ class Barang_keluar extends Model
     protected $fillable =['id_data','qty','tgl_keluar','kondisi'];
     public $timestamps = true;
 
-    public function data_barang(){
+    public function barangmasuk(){
 
-        return $this->belongsTo('App\Models\databarang','id_data');
+        return $this->belongsTo('App\Models\barang','id_barang');
 
     }
 }

@@ -53,6 +53,10 @@ class BarangController extends Controller
         $barang->tgl_masuk = $request->tgl_masuk;
         $barang->jurusan = $request->jurusan;
         $barang->save();
+        $data = new databarang;
+        $data->id_barang = $barang->id;
+        $data->jurusan = $request->jurusan;
+         $data->save();
         Alert::success('Good Job','Data saved successfully');
         return redirect()->route('barang.index');
     }
@@ -97,12 +101,13 @@ class BarangController extends Controller
             'jurusan' => 'required',
         ]);
 
-        $barang = Barang::findOrFail($id);
+        $barang = new  Barang;
         $barang->nama_barang = $request->nama_barang;
         $barang->qty = $request->qty;
         $barang->tgl_masuk = $request->tgl_masuk;
         $barang->jurusan = $request->jurusan;
         $barang->save();
+
         Alert::success('Good Job','Data edited successfully');
         return redirect()->route('barang.index');
     }

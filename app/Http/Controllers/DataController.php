@@ -18,8 +18,8 @@ class DataController extends Controller
     }
     public function index()
     {
-        $data_barang = databarang::all();
-        return view('data_barang.index', compact('data_barang'));
+        $data = databarang::with('barangmasuk')->get();
+        return view('data_barang.index', compact('data'));
     }
 
     /**
@@ -29,7 +29,7 @@ class DataController extends Controller
      */
     public function create()
     {
-        return view('data_barang.create');
+        // return view('data_barang.create');
     }
 
     /**
@@ -40,20 +40,20 @@ class DataController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nama_barang' => 'required',
-            'stok' => 'required',
-            'jurusan' => 'required',
+        // $request->validate([
+        //     'nama_barang' => 'required',
+        //     'stok' => 'required',
+        //     'jurusan' => 'required',
 
-        ]);
+        // ]);
 
-        $data_barang = new databarang;
-        $data_barang->nama_barang = $request->nama_barang;
-        $data_barang->stok = $request->stok;
-        $data_barang->jurusan = $request->jurusan;
-        $data_barang->save();
-        Alert::success('Good Job','Data saved successfully');
-        return redirect()->route('data_barang.index');
+        // $data_barang = new databarang;
+        // $data_barang->nama_barang = $request->nama_barang;
+        // $data_barang->stok = $request->stok;
+        // $data_barang->jurusan = $request->jurusan;
+        // $data_barang->save();
+        // Alert::success('Good Job','Data saved successfully');
+        // return redirect()->route('data_barang.index');
     }
 
     /**
@@ -64,8 +64,8 @@ class DataController extends Controller
      */
     public function show($id)
     {
-        $data_barang = data_barang::findOrFail($id);
-        return view('data_barang.show', compact('data_barang'));
+        // $data_barang = data_barang::findOrFail($id);
+        // return view('data_barang.show', compact('data_barang'));
     }
 
     /**
@@ -76,9 +76,9 @@ class DataController extends Controller
      */
     public function edit($id)
     {
-        $data_barang = databarang::findOrFail($id);
+        // $data_barang = databarang::findOrFail($id);
 
-        return view('data_barang.edit', compact('data_barang'));
+        // return view('data_barang.edit', compact('data_barang'));
     }
 
     /**
@@ -90,20 +90,20 @@ class DataController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validated = $request->validate([
-            'nama_barang' => 'required',
-            'stok' => 'required',
-            'jurusan' => 'required',
+        // $validated = $request->validate([
+        //     'nama_barang' => 'required',
+        //     'stok' => 'required',
+        //     'jurusan' => 'required',
 
-        ]);
+        // ]);
 
-        $data_barang = databarang::findOrFail($id);
-        $data_barang->nama_barang = $request->nama_barang;
-        $data_barang->stok = $request->stok;
-        $data_barang->jurusan = $request->jurusan;
-        $data_barang->save();
-        Alert::success('Good Job','Data edited successfully');
-        return redirect()->route('data_barang.index');
+        // $data_barang = databarang::findOrFail($id);
+        // $data_barang->nama_barang = $request->nama_barang;
+        // $data_barang->stok = $request->stok;
+        // $data_barang->jurusan = $request->jurusan;
+        // $data_barang->save();
+        // Alert::success('Good Job','Data edited successfully');
+        // return redirect()->route('data_barang.index');
     }
 
     /**
@@ -118,10 +118,10 @@ class DataController extends Controller
         // $data_barang->delete();
         // return redirect()->route('data_barang.index');
 
-        if (!databarang::destroy($id)) {
-            return redirect()->back();
-        }
-        Alert::success('Success', 'Data deleted successfully');
-        return redirect()->route('data_barang.index');
+        // if (!databarang::destroy($id)) {
+        //     return redirect()->back();
+        // }
+        // Alert::success('Success', 'Data deleted successfully');
+        // return redirect()->route('data_barang.index');
     }
 }

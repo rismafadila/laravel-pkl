@@ -15,9 +15,13 @@ class CreateDatabarangsTable extends Migration
     {
         Schema::create('databarangs', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_barang')->unique();
-            $table->BigInteger('stok');
+            $table->bigInteger('id_barang')->unsigned();
+            // $table->string('nama_barang')->unique();
+            // $table->BigInteger('stok');
             $table->string('jurusan');
+            $table->foreign('id_barang')->references('id')
+            ->on('barangs')->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }
