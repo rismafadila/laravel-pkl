@@ -43,7 +43,7 @@ class PengembalianController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+       $request->validate([
             'id_pinjem' => 'required',
             'qty' => 'required',
             'tgl_kembali' => 'required',
@@ -54,10 +54,12 @@ class PengembalianController extends Controller
         $pengembalian->qty = $request->qty;
         $pengembalian->tgl_kembali = $request->tgl_kembali;
         $pengembalian->save();
+//         $data_barang = databarang::findOrFail($request->id_data);
+// $data_barang->qty += $request->qty;
+// $data_barang->save();
+
         Alert::success('Good Job','Data saved successfully');
-        // $data_barang = databarang::findOrFail($request->id_data);
-        // $data_barang->qty += $request->stok;
-        // $data_barang->save();
+
         return redirect()->route('pengembalian.index');
     }
 
@@ -120,8 +122,11 @@ class PengembalianController extends Controller
      */
     public function destroy($id)
     {
-        $pengembalian = Pengembalian::findOrFail($id);
-        $pengembalian->delete();
+        //
+        if (!Pengembalian::destroy($id)) {
+            return redirect()->back();
+        }
+        Alert::success('Success', 'Data deleted successfully');
         return redirect()->route('pengembalian.index');
     }
 }

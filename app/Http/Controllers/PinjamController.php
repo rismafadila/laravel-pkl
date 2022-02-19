@@ -60,7 +60,7 @@ class PinjamController extends Controller
         $pinjam->tgl_pinjam = $request->tgl_pinjam;
         $pinjam->save();
         $data_barang = databarang::findOrFail($request->id_data);
-        $data_barang->stok -= $request->stok;
+        $data_barang->qty -= $request->stok;
         $data_barang->save();
         Alert::success('Good Job','Data saved successfully');
         return redirect()->route('pinjam.index');
@@ -128,8 +128,13 @@ class PinjamController extends Controller
      */
     public function destroy($id)
     {
-        $pinjam = pinjam::findOrFail($id);
-        $pinjam->delete();
+        // $pinjam = pinjam::findOrFail($id);
+        // $pinjam->delete();
+        // return redirect()->route('pinjam.index');
+        if (!pinjam::destroy($id)) {
+            return redirect()->back();
+        }
+        Alert::success('Success', 'Data deleted successfully');
         return redirect()->route('pinjam.index');
     }
 }

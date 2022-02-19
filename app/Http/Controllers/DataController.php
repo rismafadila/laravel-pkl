@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Alert;
 use App\Models\Barang;
 use App\Models\databarang;
 use Illuminate\Http\Request;
-use Alert;
+
 class DataController extends Controller
 {
     /**
@@ -18,8 +20,8 @@ class DataController extends Controller
     }
     public function index()
     {
-        $data = databarang::with('barangmasuk')->get();
-        return view('data_barang.index', compact('data'));
+        $data_barang = databarang::all();
+        return view('data_barang.index', compact('data_barang'));
     }
 
     /**
@@ -29,7 +31,7 @@ class DataController extends Controller
      */
     public function create()
     {
-        // return view('data_barang.create');
+        return view('data_barang.create');
     }
 
     /**
@@ -40,20 +42,20 @@ class DataController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'nama_barang' => 'required',
-        //     'stok' => 'required',
-        //     'jurusan' => 'required',
+        $request->validate([
+            'nama_barang' => 'required',
+            'qty' => 'required',
+            'jurusan' => 'required',
 
-        // ]);
+        ]);
 
-        // $data_barang = new databarang;
-        // $data_barang->nama_barang = $request->nama_barang;
-        // $data_barang->stok = $request->stok;
-        // $data_barang->jurusan = $request->jurusan;
-        // $data_barang->save();
-        // Alert::success('Good Job','Data saved successfully');
-        // return redirect()->route('data_barang.index');
+        $data_barang = new databarang;
+        $data_barang->nama_barang = $request->nama_barang;
+        $data_barang->qty = $request->qty;
+        $data_barang->jurusan = $request->jurusan;
+        $data_barang->save();
+        Alert::success('Good Job', 'Data saved successfully');
+        return redirect()->route('data_barang.index');
     }
 
     /**
@@ -118,10 +120,10 @@ class DataController extends Controller
         // $data_barang->delete();
         // return redirect()->route('data_barang.index');
 
-        // if (!databarang::destroy($id)) {
-        //     return redirect()->back();
-        // }
-        // Alert::success('Success', 'Data deleted successfully');
-        // return redirect()->route('data_barang.index');
+        if (!databarang::destroy($id)) {
+            return redirect()->back();
+        }
+        Alert::success('Success', 'Data deleted successfully');
+        return redirect()->route('data_barang.index');
     }
 }

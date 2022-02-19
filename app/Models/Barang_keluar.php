@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Barang_keluar extends Model
 {
     use HasFactory;
-    protected $visible =['id_data','qty','tgl_keluar','kondisi'];
-    protected $fillable =['id_data','qty','tgl_keluar','kondisi'];
+    protected $visible = ['id_data', 'qty', 'tgl_keluar', 'kondisi'];
+    protected $fillable = ['id_data', 'qty', 'tgl_keluar', 'kondisi'];
     public $timestamps = true;
 
-    public function barangmasuk(){
+    public function data_barang()
+    {
 
-        return $this->belongsTo('App\Models\barang','id_barang');
+        return $this->belongsTo('App\Models\databarang', 'id_data');
 
     }
 }
