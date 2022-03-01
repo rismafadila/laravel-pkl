@@ -51,7 +51,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="">Jurusan</label> <br>
                             <input type="radio" name="jurusan" value="RPL" > RPL
                             <br>
@@ -64,7 +64,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <button type="reset" class="btn btn-outline-warning">Reset</button>
                             <button type="submit" class="btn btn-outline-primary">Simpan</button>
