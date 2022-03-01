@@ -45,7 +45,7 @@ class BarangController extends Controller
             'nama_barang' => 'required',
             'qty' => 'required',
             'tgl_masuk' => 'required',
-            'jurusan' => 'required',
+            // 'jurusan' => 'required',
         ]);
 
         $barang = new Barang;
@@ -95,7 +95,7 @@ class BarangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validated = $request->validate([
+        $request->validate([
             'nama_barang' => 'required',
             'qty' => 'required',
             'tgl_masuk' => 'required',

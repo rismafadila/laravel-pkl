@@ -45,18 +45,18 @@ class PengembalianController extends Controller
     {
        $request->validate([
             'id_pinjem' => 'required',
-            'qty' => 'required',
+            // 'qty' => 'required',
             'tgl_kembali' => 'required',
         ]);
 
         $pengembalian = new Pengembalian;
         $pengembalian->id_pinjem = $request->id_pinjem;
-        $pengembalian->qty = $request->qty;
+        // $pengembalian->qty = $request->qty;
         $pengembalian->tgl_kembali = $request->tgl_kembali;
         $pengembalian->save();
-//         $data_barang = databarang::findOrFail($request->id_data);
-// $data_barang->qty += $request->qty;
-// $data_barang->save();
+        $data_barang = databarang::findOrFail($request->id_data);
+        $data_barang->qty += $request->qty;
+        $data_barang->save();
 
         Alert::success('Good Job','Data saved successfully');
 

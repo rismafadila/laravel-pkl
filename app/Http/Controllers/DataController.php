@@ -66,8 +66,8 @@ class DataController extends Controller
      */
     public function show($id)
     {
-        // $data_barang = data_barang::findOrFail($id);
-        // return view('data_barang.show', compact('data_barang'));
+        $data_barang = data_barang::findOrFail($id);
+        return view('data_barang.show', compact('data_barang'));
     }
 
     /**
@@ -78,9 +78,9 @@ class DataController extends Controller
      */
     public function edit($id)
     {
-        // $data_barang = databarang::findOrFail($id);
+        $data_barang = databarang::findOrFail($id);
 
-        // return view('data_barang.edit', compact('data_barang'));
+        return view('data_barang.edit', compact('data_barang'));
     }
 
     /**
@@ -92,20 +92,20 @@ class DataController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $validated = $request->validate([
-        //     'nama_barang' => 'required',
-        //     'stok' => 'required',
-        //     'jurusan' => 'required',
+        $validated = $request->validate([
+            'nama_barang' => 'required',
+            'stok' => 'required',
+            'jurusan' => 'required',
 
-        // ]);
+        ]);
 
-        // $data_barang = databarang::findOrFail($id);
-        // $data_barang->nama_barang = $request->nama_barang;
-        // $data_barang->stok = $request->stok;
-        // $data_barang->jurusan = $request->jurusan;
-        // $data_barang->save();
-        // Alert::success('Good Job','Data edited successfully');
-        // return redirect()->route('data_barang.index');
+        $data_barang = databarang::findOrFail($id);
+        $data_barang->nama_barang = $request->nama_barang;
+        $data_barang->stok = $request->stok;
+        $data_barang->jurusan = $request->jurusan;
+        $data_barang->save();
+        Alert::success('Good Job','Data edited successfully');
+        return redirect()->route('data_barang.index');
     }
 
     /**

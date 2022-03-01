@@ -22,14 +22,14 @@ class Barang extends Model
 
     }
 
-    public static function boot()
-    {
-        parent::boot();
-        self::deleting(function ($barangmasuk) {
-            if ($barangmasuk->barang_keluar->count() > 0) {
-                Alert::error('Failed', 'Data not deleted');
-                return false;
-            }
-        });
-    }
+    // public static function boot()
+    // {
+    //     parent::boot();
+    //     self::deleting(function ($barangmasuk) {
+    //         if ($barangmasuk->barang_keluar->count() > 0) {
+    //             Alert::error('Failed', 'Data not deleted');
+    //             return false;
+    //         }
+    //     });
+    // }
 }

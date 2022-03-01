@@ -46,7 +46,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Peminjam</th>
-                                <th>Qty</th>
+                                {{-- <th>Qty</th> --}}
                                 <th>Tanggal Kembali</th>
                                 <th>Aksi</th>
                             </tr>
@@ -55,14 +55,14 @@
                             <tr>
                                 <td>{{$no++}}</td>
                                 <td>{{ $data->pinjam->nama }}</td>
-                                <td>{{$data->qty}}</td>
+                                {{-- <td>{{$data->qty}}</td> --}}
                                 <td>{{$data->tgl_kembali}}</td>
                                 <td>
                                     <form action="{{route('pengembalian.destroy',$data->id)}}" method="post">
                                         @method('delete')
                                         @csrf
-                                        <a href="{{route('pengembalian.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
-                                        <a href="{{route('pengembalian.show',$data->id)}}" class="btn btn-outline-warning">Show</a>
+                                        {{-- <a href="{{route('pengembalian.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
+                                        <a href="{{route('pengembalian.show',$data->id)}}" class="btn btn-outline-warning">Show</a> --}}
                                         <button type="submit" class="btn btn-outline-danger delete-confirm" >Delete</button>
                                     </form>
                                 </td>

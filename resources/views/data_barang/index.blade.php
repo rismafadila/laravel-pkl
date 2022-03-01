@@ -64,8 +64,8 @@
                                             <form action="{{ route('data_barang.destroy', $data->id) }}" method="post">
                                                 @method('delete')
                                                 @csrf
-                                                {{-- <a href="{{route('data_barang.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
-                                        <a href="{{route('data_barang.show',$data->id)}}" class="btn btn-outline-warning">Show</a> --}}
+                                                 <a href="{{route('data_barang.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
+                                        <a href="{{route('data_barang.show',$data->id)}}" class="btn btn-outline-warning">Show</a>
                                                 <button type="submit"
                                                     class="btn btn-outline-danger delete-confirm">Delete</button>
                                             </form>
