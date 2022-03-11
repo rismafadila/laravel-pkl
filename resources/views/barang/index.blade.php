@@ -8,6 +8,7 @@
 
 @endsection
 
+
 @section('js')
 <script src="{{asset('js/sweetalert2.js')}}"></script>
 <script>
@@ -81,11 +82,16 @@
 @endsection
 
 @section('css')
-
+<link rel="stylesheet" href="{{ asset('DataTables/datatables.min.css') }}">
 @endsection
 
 @section('js')
+<script src="{{ asset('Datatables/datatables.min.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
 
+</script>
 @endsection
-
 

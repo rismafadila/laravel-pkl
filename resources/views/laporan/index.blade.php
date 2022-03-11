@@ -15,8 +15,19 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
+                    <div class="">
+                                    <form action="{{ route('laporan.index') }}" method="post"
+                                        style="display: flex;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-primary">Pilih Data</button>
 
-                    <a href="{{route('laporan.create')}}" class="btn btn-sm btn-outline-primary float-right">Tambah</a>
+                                        <select name="status" id="" class="form-control">
+                                            <option value="0">Belum Dikembalikan</option>
+                                            <option value="1">Sudah Dikembalikan</option>
+                                        </select>
+                                    </form>
+                                </div>
+                    {{-- <a href="{{route('laporan.create')}}" class="btn btn-sm btn-outline-primary float-right">Tambah</a> --}}
                 </div>
 
                 <div class="card-body">
@@ -24,21 +35,16 @@
                         <table class="table">
                             <tr>
                                 <th>No</th>
-                                <th>Nama Barang</th>
-                                <th>Nama</th>
-                                <th>Tanggal Pinjam</th>
-                                <th>Tanggal Kembali</th>
-                                <th>Jurusan</th>
+                                <th>Nama Peminjam</th>
+                                <th>Status</th>
+
                             </tr>
                             @php $no=1; @endphp
                             @foreach($laporan as $data)
                             <tr>
-                                <td>{{$no++}}</td>
-                                <td>{{ $data->data_barang->nama_barang }}</td>
-                                <td>{{ $data->pinjam->nama }}</td>
-                                <td>{{ $data->pinjam->tgl_pinjam }}</td>
-                                <td>{{ $data->pengembalian->tgl_kembali }}</td>
-                                <td>{{$data->jurusan}}</td>
+                               <th>{{ $no++ }}</th>
+                               <td>{{ $data->nama }}</td>
+                               <td>{{ $data->status ? 'Sudah Dikembalikan' : 'Belum Dikembalikan' }}
                                 <td>
 
                                 </td>

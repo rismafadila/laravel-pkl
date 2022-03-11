@@ -16,11 +16,16 @@ class CreatePengembaliansTable extends Migration
         Schema::create('pengembalians', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_pinjem')->unsigned();
-            // $table->bigInteger('qty');
+            $table->bigInteger('id_data')->unsigned();
+            $table->bigInteger('qty');
             $table->date('tgl_kembali');
             $table->foreign('id_pinjem')->references('id')
             ->on('pinjams')->onUpdate('cascade')
             ->onDelete('cascade');
+            $table->foreign('id_data')->references('id')
+            ->on('databarangs')->onUpdate('cascade')
+            ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

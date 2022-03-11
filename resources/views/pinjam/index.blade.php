@@ -51,6 +51,7 @@
                                 <th>No Telp</th>
                                 <th>Qty</th>
                                 <th>Tanggal Pinjam</th>
+                                <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                             @php $no=1; @endphp
@@ -62,12 +63,13 @@
                                 <td>{{$data->telp}}</td>
                                 <td>{{$data->stok}}</td>
                                 <td>{{$data->tgl_pinjam}}</td>
+                                <td>{{ $data->status ? 'Sudah Dikembalikan' : 'Belum Dikembalikan' }}</td>
                                 <td>
                                     <form action="{{route('pinjam.destroy',$data->id)}}" method="post">
                                         @method('delete')
                                         @csrf
-                                        <a href="{{route('pinjam.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
-                                        <a href="{{route('pinjam.show',$data->id)}}" class="btn btn-outline-warning">Show</a>
+                                        {{-- <a href="{{route('pinjam.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
+                                        <a href="{{route('pinjam.show',$data->id)}}" class="btn btn-outline-warning">Show</a> --}}
                                         <button type="submit" class="btn btn-outline-danger delete-confirm" >Delete</button>
                                     </form>
                                 </td>

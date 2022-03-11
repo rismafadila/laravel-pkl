@@ -94,14 +94,14 @@ class DataController extends Controller
     {
         $validated = $request->validate([
             'nama_barang' => 'required',
-            'stok' => 'required',
+            'qty' => 'required',
             'jurusan' => 'required',
 
         ]);
 
         $data_barang = databarang::findOrFail($id);
         $data_barang->nama_barang = $request->nama_barang;
-        $data_barang->stok = $request->stok;
+        $data_barang->qty = $request->qty;
         $data_barang->jurusan = $request->jurusan;
         $data_barang->save();
         Alert::success('Good Job','Data edited successfully');

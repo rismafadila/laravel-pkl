@@ -47,7 +47,7 @@ class BarangKeluarController extends Controller
             'id_data' => 'required',
             'qty' => 'required',
             'tgl_keluar' => 'required',
-            'kondisi' => 'required',
+            'keterangan' => 'required',
 
         ]);
 
@@ -55,7 +55,7 @@ class BarangKeluarController extends Controller
         $barang_keluar->id_data = $request->id_data;
         $barang_keluar->qty = $request->qty;
         $barang_keluar->tgl_keluar = $request->tgl_keluar;
-        $barang_keluar->kondisi = $request->kondisi;
+        $barang_keluar->keterangan = $request->keterangan;
         $barang_keluar->save();
         $data_barang = databarang::findOrFail($request->id_data);
         $data_barang->qty -= $request->qty;
@@ -102,14 +102,14 @@ class BarangKeluarController extends Controller
             'id_barang' => 'required',
             'qty' => 'required',
             'tgl_keluar' => 'required',
-            'kondisi' => 'required',
+            'keterangan' => 'required',
         ]);
 
         $barang_keluar = Barang_keluar::findOrFail($id);
         $barang_keluar->id_barang = $request->id_barang;
         $barang_keluar->qty = $request->qty;
         $barang_keluar->tgl_keluar = $request->tgl_keluar;
-        $barang_keluar->kondisi = $request->kondisi;
+        $barang_keluar->keterangan = $request->keterangan;
         $barang_keluar->save();
         Alert::success('Good Job', 'Data edited successfully');
         return redirect()->route('barang_keluar.index');

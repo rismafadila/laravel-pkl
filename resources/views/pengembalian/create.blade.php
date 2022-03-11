@@ -37,7 +37,20 @@
                                 </span>
                             @enderror
                         </div>
-                        {{-- <div class="form-group">
+                        <div class="form-group">
+                            <label for="">Nama Barang</label>
+                            <select name="id_data" class="form-control @error('id_data') is-invalid @enderror" >
+                                @foreach($data_barang as $data)
+                                    <option value="{{$data->id}}">{{$data->nama_barang}}</option>
+                                @endforeach
+                            </select>
+                            @error('id_data')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="">Masukan Jumlah</label>
                             <input type="number" name="qty" class="form-control @error('qty') is-invalid @enderror">
                              @error('qty')
@@ -45,7 +58,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        </div> --}}
+                        </div>
                         <div class="form-group">
                             <label for="">Masukan Tanggal Pengembalian</label>
                             <input type="date" name="tgl_kembali" class="form-control @error('tgl_kembali') is-invalid @enderror">

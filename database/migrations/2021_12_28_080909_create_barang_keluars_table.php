@@ -18,7 +18,7 @@ class CreateBarangKeluarsTable extends Migration
             $table->bigInteger('id_data')->unsigned();
             $table->bigInteger('qty');
             $table->date('tgl_keluar');
-            $table->string('kondisi');
+            $table->string('keterangan');
             $table->foreign('id_data')->references('id')
                 ->on('databarangs')->onUpdate('cascade')
                 ->onDelete('cascade');

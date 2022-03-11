@@ -77,5 +77,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth']], function(){
         Route::resource('barang_keluar', BarangKeluarController::class);
         Route::resource('pinjam', PinjamController::class);
         Route::resource('pengembalian', PengembalianController::class);
-        Route::resource('laporan', LaporanController::class);
+        // Route::resource('laporan', LaporanController::class);
+        Route::get('laporan', [laporanController::class, 'index'])->name('laporan.index');
+        Route::post('laporan', [laporanController::class, 'index']);
     });

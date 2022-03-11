@@ -57,10 +57,10 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="">Kondisi </label>
-                                <input type="text" name="kondisi"
-                                    class="form-control @error('kondisi') is-invalid @enderror">
-                                @error('kondisi')
+                                <label for="">Keterangan </label>
+                                <input type="text" name="keterangan"
+                                    class="form-control @error('keterangan') is-invalid @enderror">
+                                @error('keterangan')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

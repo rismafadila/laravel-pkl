@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\databarang;
-use App\Models\Pinjam;
-use App\Models\Pengembalian;
-use Illuminate\Http\Request;
+
 use Alert;
+use App\Models\databarang;
+use App\Models\Pengembalian;
+use App\Models\Pinjam;
+use Illuminate\Http\Request;
+
 class PengembalianController extends Controller
 {
     /**
@@ -19,7 +21,7 @@ class PengembalianController extends Controller
     }
     public function index()
     {
-        $pengembalian = Pengembalian::with('pinjam')->get();
+        $pengembalian = Pengembalian::with('pinjam','data_barang')->get();
         return view('pengembalian.index', compact('pengembalian'));
     }
 
@@ -30,9 +32,10 @@ class PengembalianController extends Controller
      */
     public function create()
     {
+        $pengembalian = Pengembalian::all();
         $pinjam = Pinjam::all();
         $data_barang = databarang::all();
-        return view('pengembalian.create', compact('pinjam','data_barang'));
+        return view('pengembalian.create', compact('pinjam', 'data_barang'));
     }
 
     /**
@@ -43,22 +46,27 @@ class PengembalianController extends Controller
      */
     public function store(Request $request)
     {
-       $request->validate([
+        $validated = $request->validate([
             'id_pinjem' => 'required',
-            // 'qty' => 'required',
+            'id_data' => 'required',
+            'qty' => 'required',
             'tgl_kembali' => 'required',
         ]);
 
         $pengembalian = new Pengembalian;
         $pengembalian->id_pinjem = $request->id_pinjem;
-        // $pengembalian->qty = $request->qty;
+        $pengembalian->id_data = $request->id_data;
+        $pengembalian->qty = $request->qty;
         $pengembalian->tgl_kembali = $request->tgl_kembali;
         $pengembalian->save();
-        $data_barang = databarang::findOrFail($request->id_data);
-        $data_barang->qty += $request->qty;
-        $data_barang->save();
+        $pinjam = pinjam::findOrFail($request->id_pinjem);
+     $pinjam->status = 1;
+     $pinjam->save();
+        // $data_barang = databarang::findOrFail($request->id_data);
+        // $data_barang->qty += $request->qty;
+        // $data_barang->save();
 
-        Alert::success('Good Job','Data saved successfully');
+        Alert::success('Good Job', 'Data saved successfully');
 
         return redirect()->route('pengembalian.index');
     }
@@ -86,7 +94,7 @@ class PengembalianController extends Controller
         $pengembalian = Pengembalian::findOrFail($id);
         $pinjam = Pinjam::all();
         $data_barang = databarang::all();
-        return view('pengembalian.edit', compact('pengembalian','pinjam','data_barang'));
+        return view('pengembalian.edit', compact('pengembalian', 'pinjam', 'data_barang'));
     }
 
     /**
@@ -100,6 +108,7 @@ class PengembalianController extends Controller
     {
         $request->validate([
             'id_pinjem' => 'required',
+            'id_data' => 'required',
             'qty' => 'required',
             'tgl_kembali' => 'required',
 
@@ -107,10 +116,11 @@ class PengembalianController extends Controller
 
         $pengembalian = Pengembalian::findOrFail($id);
         $pengembalian->id_pinjem = $request->id_pinjem;
+        $pengembalian->id_data = $request->id_data;
         $pengembalian->qty = $request->qty;
         $pengembalian->tgl_kembali = $request->tgl_kembali;
         $pengembalian->save();
-        Alert::success('Good Job','Data edited successfully');
+        Alert::success('Good Job', 'Data edited successfully');
         return redirect()->route('pengembalian.index');
     }
 

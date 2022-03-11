@@ -49,7 +49,7 @@
                                     <th>Nama Barang</th>
                                     <th>Qty</th>
                                     <th>Tanggal Keluar</th>
-                                    <th>Kondisi</th>
+                                    <th>Keterangan</th>
                                     <th>Aksi</th>
                                 </tr>
                                 @php $no=1; @endphp
@@ -59,7 +59,7 @@
                                         <td>{{ $data->data_barang->nama_barang }}</td>
                                         <td>{{ $data->qty }}</td>
                                         <td>{{ $data->tgl_keluar }}</td>
-                                        <td>{{ $data->kondisi }}</td>
+                                        <td>{{ $data->keterangan }}</td>
                                         <td>
                                             <form action="{{ route('barang_keluar.destroy', $data->id) }}" method="post">
                                                 @method('delete')

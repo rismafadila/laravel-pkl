@@ -259,7 +259,7 @@ return [
                 ],
 
                 [
-                    'text' => 'Data Barang',
+                    'text' => 'Stok Barang',
                     'url'  => 'admin/data_barang',
                     'icon' => 'fas fa-box-open',
                 ],

@@ -51,7 +51,7 @@ class PinjamController extends Controller
             'stok' => 'required',
             'tgl_pinjam' => 'required',
         ]);
-
+        
         $pinjam = new Pinjam;
         $pinjam->id_data = $request->id_data;
         $pinjam->nama = $request->nama;

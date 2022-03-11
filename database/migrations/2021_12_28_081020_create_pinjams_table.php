@@ -20,6 +20,8 @@ class CreatePinjamsTable extends Migration
             $table->string('telp');
             $table->bigInteger('stok');
             $table->date('tgl_pinjam');
+            $table->boolean('status')->default(0);
+
             $table->foreign('id_data')->references('id')
             ->on('databarangs')->onUpdate('cascade')
             ->onDelete('cascade');

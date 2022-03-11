@@ -45,8 +45,9 @@
                         <table class="table">
                             <tr>
                                 <th>No</th>
-                                <th>Peminjam</th>
-                                {{-- <th>Qty</th> --}}
+                                <th>Nama Peminjam</th>
+                                 <th>Nama Barang</th>
+                                <th>Qty</th>
                                 <th>Tanggal Kembali</th>
                                 <th>Aksi</th>
                             </tr>
@@ -55,7 +56,8 @@
                             <tr>
                                 <td>{{$no++}}</td>
                                 <td>{{ $data->pinjam->nama }}</td>
-                                {{-- <td>{{$data->qty}}</td> --}}
+                                <td>{{ $data->data_barang->nama_barang }}</td>
+                                <td>{{$data->qty}}</td>
                                 <td>{{$data->tgl_kembali}}</td>
                                 <td>
                                     <form action="{{route('pengembalian.destroy',$data->id)}}" method="post">
