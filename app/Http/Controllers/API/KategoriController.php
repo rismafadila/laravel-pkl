@@ -17,7 +17,7 @@ class KategoriController extends Controller
         //make response JSON
         return response()->json([
             'success' => true,
-            'message' => 'Data Peserta',
+            'message' => 'Data Barang',
             'data' => $data_barang,
         ], 200);
     }
@@ -32,8 +32,8 @@ class KategoriController extends Controller
 
         $data_barang = new databarang();
         $data_barang->nama_barang = $request->nama_barang;
-$data_barang->qty = $request->qty;
-$data_barang->jurusan = $request->jurusan;
+        $data_barang->qty = $request->qty;
+        $data_barang->jurusan = $request->jurusan;
 
         $data_barang->save();
         return response()->json([
@@ -73,8 +73,8 @@ $data_barang->jurusan = $request->jurusan;
 
         $data_barang = databarang::findOrFail($id);
         $data_barang->nama_barang = $request->nama_barang;
-$data_barang->qty = $request->qty;
-$data_barang->jurusan = $request->jurusan;
+        $data_barang->qty = $request->qty;
+        $data_barang->jurusan = $request->jurusan;
 
         $data_barang->save();
         return response()->json([
@@ -96,4 +96,3 @@ $data_barang->jurusan = $request->jurusan;
 
     }
 }
-

@@ -8,8 +8,8 @@ use Alert;
 class databarang extends Model
 {
     use HasFactory;
-    protected $visible =['id_barang','jurusan'];
-    protected $fillable =['id_barang','jurusan'];
+    protected $visible =['id_barang','nama_barang','qty','jurusan'];
+    protected $fillable =['id_barang','nama_barang','qty','jurusan'];
     public $timestamps = true;
 
     public function barangmasuk(){
