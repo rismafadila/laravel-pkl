@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\data_barang;
 use Illuminate\Http\Request;
 
-class DataPesertaController extends Controller
+class DataController extends Controller
 {
 
     public function index()
