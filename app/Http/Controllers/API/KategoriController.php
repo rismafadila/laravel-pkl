@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\data_barang;
+use App\Models\databarang;
 use Illuminate\Http\Request;
 
 class DataController extends Controller
@@ -12,7 +12,7 @@ class DataController extends Controller
     public function index()
     {
         //get data from table data_barang
-        $data_barang = data_barang::all();
+        $data_barang = databarang::all();
 
         //make response JSON
         return response()->json([
@@ -30,7 +30,7 @@ class DataController extends Controller
     public function store(Request $request)
     {
 
-        $data_barang = new data_barang();
+        $data_barang = new databarang();
         $data_barang->nama = $request->nama;
         $time = date('ymd');
         $random = mt_rand(1000, 9999);
@@ -49,7 +49,7 @@ $data_barang->jurusan = $request->jurusan;
 
     public function show($id)
     {
-        $data_barang = data_barang::findOrFail($id);
+        $data_barang = databarang::findOrFail($id);
         if ($data_barang) {
             return response()->json([
                 'success' => true,
@@ -74,7 +74,7 @@ $data_barang->jurusan = $request->jurusan;
     public function update(Request $request, $id)
     {
 
-        $data_barang = data_barang::findOrFail($id);
+        $data_barang = databarang::findOrFail($id);
         $data_barang->nama_barang = $request->nama_barang;
 $data_barang->qty = $request->qty;
 $data_barang->jurusan = $request->jurusan;
@@ -89,7 +89,7 @@ $data_barang->jurusan = $request->jurusan;
 
     public function destroy($id)
     {
-        $data_barang = data_barang::findOrFail($id);
+        $data_barang = databarang::findOrFail($id);
         $data_barang->delete();
         return response()->json([
             'success' => true,
