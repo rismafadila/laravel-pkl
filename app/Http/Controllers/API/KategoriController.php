@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\databarang;
 use Illuminate\Http\Request;
 
-class DataController extends Controller
+class KategoriController extends Controller
 {
 
     public function index()
@@ -31,9 +31,6 @@ class DataController extends Controller
     {
 
         $data_barang = new databarang();
-        $data_barang->nama = $request->nama;
-        $time = date('ymd');
-        $random = mt_rand(1000, 9999);
         $data_barang->nama_barang = $request->nama_barang;
 $data_barang->qty = $request->qty;
 $data_barang->jurusan = $request->jurusan;
