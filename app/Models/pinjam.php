@@ -14,7 +14,7 @@ class pinjam extends Model
 
     public function data_barang(){
 
-        return $this->belongsTo('App\Models\Databarang','id_data');
+        return $this->belongsTo('App\Models\databarang','id_data');
 
     }
     public function pengembalian(){
